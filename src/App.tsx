@@ -470,7 +470,7 @@ const Home = () => {
                 style={{ transitionDelay: '200ms', boxShadow: '0 10px 40px -15px rgba(0, 0, 0, 0.1)' }}>
               <div className="relative h-52 overflow-hidden">
                 <img 
-                  src="https://www.zdnet.com/a/img/resize/8d0894cdabdb3ee0a7eb5042d8e2e99e8cd05b5c/2023/11/16/c7eb46be-ce33-4e87-ab04-41bd8e102c01/gettyimages-1488743282.jpg?auto=webp&fit=crop&height=900&width=1200" 
+                  src="https://yourgpt.ai/_next/image?url=https%3A%2F%2Fs3.us-east-2.amazonaws.com%2Fassets.yourgpt.ai%2Fcontent%2Fuploads%2F2024%2F07%2F03144738%2Ffeatured.jpg&w=3840&q=75" 
                   alt="Custom AI Agents"
                   className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
                 />
@@ -602,7 +602,7 @@ const Home = () => {
                 style={{ transitionDelay: '500ms', boxShadow: '0 10px 40px -15px rgba(0, 0, 0, 0.1)' }}>
               <div className="relative h-52 overflow-hidden">
                 <img 
-                  src="https://cdn.sanity.io/images/vk5sd2rx/production/a4d420638a1e7bc8c1fd0f08c345be4f651311c4-1600x900.png" 
+                  src="https://www.orangemantra.com/blog/wp-content/uploads/2023/03/MicrosoftTeams-image-56-min.png" 
                   alt="Data Analytics & Visualization"
                   className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
                 />
