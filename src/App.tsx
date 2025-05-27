@@ -24,7 +24,14 @@ import {
   Lightbulb,
   MapPin,
   Award,
-  Menu
+  Menu,
+  FileText,
+  Check,
+  ChevronRight,
+  LineChart,
+  Database,
+  ArrowDown,
+  Clock
 } from 'lucide-react';
 import heroImage from './assets/hero.png';
 import WebDevelopment from './WebDevelopment';
@@ -33,7 +40,14 @@ import CustomAIAgents from './CustomAIAgents';
 import SocialMediaMarketing from './SocialMediaMarketing';
 import SearchEngineOptimization from './SearchEngineOptimization';
 import DataAnalytics from './DataAnalytics';
+import ResearchAndAcademicWriting from './ResearchAndAcademicWriting';
+import PaidAdvertising from './PaidAdvertising';
+import SecurityServices from '../SecurityServices';
+import Portfolio from './Portfolio';
+import ProjectDetail from './ProjectDetail';
 import ScrollToTop from './ScrollToTop';
+import FeaturedProjects from './components/FeaturedProjects';
+import Navbar from './components/Navbar';
 
 // Main App component that contains the home page content
 const Home = () => {
@@ -86,49 +100,101 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-white text-gray-800">
       {/* Hero Section */}
-      <header className="pt-28 pb-24 bg-white relative overflow-hidden">
+      <header className="pt-20 sm:pt-24 md:pt-28 pb-16 sm:pb-20 md:pb-24 bg-white relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-transparent"></div>
         </div>
-        <div className="container mx-auto px-6 relative">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8 text-center lg:text-left slide-in-left">
-              <h1 className="text-5xl lg:text-6xl font-bold text-gray-900">
-                Transforming Ideas into
-                <span className="text-orange-500 block">Digital Reality</span>
+        <div className="container mx-auto px-4 sm:px-6 relative">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div className="space-y-5 sm:space-y-6 md:space-y-8 text-left slide-in-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-blue-100 to-gray-100 rounded-full text-xs sm:text-sm font-semibold mb-2 animate-pulse">
+                <div className="flex -space-x-1">
+                  <div className="w-4 sm:w-5 h-4 sm:h-5 rounded-full bg-blue-500 text-white flex items-center justify-center text-[10px] sm:text-xs"><Shield className="w-2 sm:w-3 h-2 sm:h-3" /></div>
+                  <div className="w-4 sm:w-5 h-4 sm:h-5 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px] sm:text-xs"><Globe2 className="w-2 sm:w-3 h-2 sm:h-3" /></div>
+                </div>
+                <span className="text-xs sm:text-sm">Kenya's Premier Digital Agency • Est. 2024</span>
+              </div>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                Skyrocket Your<br className="md:hidden"/> Business <br className="hidden md:block lg:hidden"/>With
+                <div className="relative mt-1 sm:mt-2">
+                  <span className="block bg-gradient-to-r from-blue-600 via-gray-700 to-blue-600 text-transparent bg-clip-text">Proven Digital Solutions</span>
+                  <div className="absolute -bottom-1 sm:-bottom-2 left-0 h-0.5 sm:h-1 w-full bg-gradient-to-r from-blue-600 via-gray-700 to-blue-600 rounded-full transform scale-x-0 transition-transform duration-1000 animate-scale-x-full"></div>
+                </div>
               </h1>
-              <p className="text-xl text-gray-600">
-                Your trusted partner in digital transformation. We create innovative solutions that help your business thrive in the digital age.
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 mx-auto lg:mx-0 max-w-md lg:max-w-none">
+                <strong>500+ businesses transformed</strong> through strategic digital services that deliver measurable results. Get a custom solution designed to increase your revenue within 30 days.
               </p>
-              <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+              
+              {/* Trust indicators */}
+              <div className="flex flex-wrap items-center gap-2 sm:gap-4 justify-start pt-2">
+                <div className="flex items-center gap-1">
+                  <div className="flex -space-x-1.5 sm:-space-x-2">
+                    {[1, 2, 3, 4, 5].map((_, i) => (
+                      <div key={i} className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-blue-200 to-blue-300 border-2 border-white flex items-center justify-center text-[10px] sm:text-xs font-semibold text-blue-700">
+                        {String.fromCharCode(65 + i)}
+                      </div>
+                    ))}
+                  </div>
+                  <span className="text-gray-600 text-xs sm:text-sm ml-1">500+ Happy Clients</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <div className="flex">
+                    {[1, 2, 3, 4, 5].map((_, i) => (
+                      <svg key={i} className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <span className="text-gray-600 text-xs sm:text-sm">4.9/5 Rating</span>
+                </div>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4 justify-start">
                 <button
                   onClick={() => setShowContact(true)}
-                  className="px-8 py-4 bg-orange-500 text-white rounded-xl font-semibold hover:bg-orange-600 
-                           transition-all duration-300 flex items-center gap-2 group"
+                  className="px-6 sm:px-8 py-3 sm:py-4 bg-orange-500 text-white rounded-lg sm:rounded-xl font-semibold hover:bg-orange-600 
+                           transition-all duration-300 flex items-center gap-2 group w-full sm:w-auto text-sm sm:text-base"
                 >
-                  Get Started
-                  <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
+                  Get Free Consultation
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
                 </button>
-                <button
-                  onClick={() => setShowContact(true)}
-                  className="px-8 py-4 border-2 border-orange-500 text-orange-500 rounded-xl font-semibold
-                           hover:bg-orange-50 transition-all duration-300 flex items-center gap-2 group"
-                >
-                  Learn More
-                  <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
-                </button>
+                <div className="text-xs sm:text-sm text-blue-600 animate-pulse flex items-center mt-2 sm:mt-0">
+                  <Clock className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                  <span className="whitespace-nowrap">Limited Time: 50% Off First Month</span>
+                </div>
+              </div>
+              
+              {/* Client logos */}
+              <div className="pt-4 sm:pt-6">
+                <p className="text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">TRUSTED BY LEADING KENYAN BUSINESSES</p>
+                <div className="flex flex-wrap items-center gap-4 sm:gap-6 justify-start opacity-70 hover:opacity-100 transition-opacity duration-300">
+                  <img src="https://res.cloudinary.com/dtbzsezyo/image/upload/v1720016992/client-logo-1_lqohes.png" alt="Client 1" className="h-6 sm:h-8 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+                  <img src="https://res.cloudinary.com/dtbzsezyo/image/upload/v1720016992/client-logo-2_bwgibr.png" alt="Client 2" className="h-6 sm:h-8 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+                  <img src="https://res.cloudinary.com/dtbzsezyo/image/upload/v1720016992/client-logo-3_vdnajq.png" alt="Client 3" className="h-6 sm:h-8 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+                </div>
               </div>
             </div>
-            <div className="relative slide-in-right">
-              <div className="relative z-10">
+            <div className="relative slide-in-right mt-6 lg:mt-0 mx-auto max-w-md lg:max-w-none">
+              <div className="relative z-10 rounded-xl sm:rounded-2xl overflow-hidden shadow-lg sm:shadow-2xl">
                 <img
                   src={heroImage}
                   alt="Digital Innovation"
                   className="w-full h-auto transform hover:scale-105 transition-transform duration-300"
                 />
+                
+                {/* Floating stats */}
+                <div className="absolute top-2 sm:top-4 right-2 sm:right-4 bg-white/90 backdrop-blur-sm p-2 sm:p-3 rounded-md sm:rounded-lg shadow-lg sm:shadow-xl animate-float-slow">
+                  <div className="text-orange-500 font-bold text-base sm:text-xl">+127%</div>
+                  <div className="text-gray-700 text-[10px] sm:text-xs">Avg. ROI</div>
+                </div>
+                
+                <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 bg-white/90 backdrop-blur-sm p-2 sm:p-3 rounded-md sm:rounded-lg shadow-lg sm:shadow-xl animate-float">
+                  <div className="text-orange-500 font-bold text-base sm:text-xl">30 Days</div>
+                  <div className="text-gray-700 text-[10px] sm:text-xs">Results Guarantee</div>
+                </div>
               </div>
-              <div className="absolute -top-6 -right-6 w-24 h-24 bg-orange-500/10 rounded-full"></div>
-              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-orange-500/10 rounded-full"></div>
+              <div className="absolute -top-4 sm:-top-6 -right-4 sm:-right-6 w-16 sm:w-24 h-16 sm:h-24 bg-orange-500/10 rounded-full hidden sm:block"></div>
+              <div className="absolute -bottom-4 sm:-bottom-6 -left-4 sm:-left-6 w-20 sm:w-32 h-20 sm:h-32 bg-orange-500/10 rounded-full hidden sm:block"></div>
             </div>
           </div>
         </div>
@@ -138,15 +204,15 @@ const Home = () => {
       <nav className="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50 top-0">
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between h-20">
-            <div className="text-2xl font-bold text-orange-500 fade-scale">Global Digital Experts</div>
+            <div className="text-2xl font-bold text-blue-600 fade-scale">Global Digital Experts</div>
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#" className="text-gray-600 hover:text-orange-500 transition-colors duration-300 reveal stagger-1">Home</a>
-              <a href="#" className="text-gray-600 hover:text-orange-500 transition-colors duration-300 reveal stagger-2">Services</a>
-              <a href="#" className="text-gray-600 hover:text-orange-500 transition-colors duration-300 reveal stagger-3">About</a>
-              <a href="#" className="text-gray-600 hover:text-orange-500 transition-colors duration-300 reveal stagger-4">Portfolio</a>
+              <Link to="/" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 reveal stagger-1">Home</Link>
+              <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 reveal stagger-2">Services</a>
+              <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 reveal stagger-3">About</a>
+              <Link to="/portfolio" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 reveal stagger-4">Portfolio</Link>
               <button 
                 onClick={() => setShowContact(true)}
-                className="px-6 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors duration-300 reveal stagger-5"
+                className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300 reveal stagger-5"
               >
                 Contact Us
               </button>
@@ -169,9 +235,9 @@ const Home = () => {
               <X className="w-6 h-6" />
             </button>
             
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">Contact Us</h2>
-              <p className="text-gray-600">Choose your preferred way to reach us</p>
+            <div className="text-left sm:text-center mb-6 sm:mb-8">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Contact Us</h2>
+              <p className="text-gray-600 text-sm sm:text-base">Choose your preferred way to reach us</p>
             </div>
 
             <div className="space-y-6">
@@ -225,7 +291,7 @@ const Home = () => {
             >
               <X className="w-6 h-6" />
             </button>
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Contact Us</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-left sm:text-center">Contact Us</h3>
             <div className="space-y-4">
               <button
                 onClick={handleWhatsApp}
@@ -258,13 +324,13 @@ const Home = () => {
 
       {/* About Us Section */}
       <section className="py-24 bg-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-orange-50 rounded-bl-[100px] transform rotate-6"></div>
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-orange-50 rounded-tr-[100px] transform -rotate-6"></div>
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-blue-50 rounded-bl-[100px] transform rotate-6"></div>
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-blue-50 rounded-tr-[100px] transform -rotate-6"></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8 reveal">
               <div>
-                <span className="text-orange-500 font-semibold text-lg mb-4 block reveal-from-bottom">Our Journey</span>
+                <span className="text-blue-600 font-semibold text-lg mb-4 block reveal-from-bottom">Our Journey</span>
                 <h2 className="text-4xl font-bold mb-6 text-gray-900">Driving Digital Innovation Since 2024</h2>
                 <p className="text-gray-600 text-lg leading-relaxed">
                   We've been at the forefront of digital transformation, helping businesses across Kenya embrace the power of technology. Our journey has been marked by innovation, excellence, and a commitment to delivering exceptional results.
@@ -294,15 +360,15 @@ const Home = () => {
                 ].map((feature, index) => (
                   <div 
                     key={index}
-                    className="reveal p-6 rounded-xl bg-white border border-orange-100 hover:border-orange-500 transition-all duration-300 
+                    className="reveal p-6 rounded-xl bg-white border border-blue-100 hover:border-blue-600 transition-all duration-300 
                              shadow-lg hover:shadow-xl group"
                     style={{ transitionDelay: `${feature.delay}ms` }}
                   >
-                    <div className="bg-orange-500 w-12 h-12 rounded-lg flex items-center justify-center mb-4
+                    <div className="bg-blue-600 w-12 h-12 rounded-lg flex items-center justify-center mb-4
                                  group-hover:scale-110 transition-transform duration-300">
                       {React.createElement(feature.icon, { className: 'w-6 h-6 text-white' })}
                     </div>
-                    <h3 className="text-lg font-semibold mb-2 text-gray-900 group-hover:text-orange-500 transition-colors duration-300">
+                    <h3 className="text-lg font-semibold mb-2 text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
                       {feature.title}
                     </h3>
                     <p className="text-gray-600 text-sm">
@@ -319,15 +385,15 @@ const Home = () => {
                 ].map((stat, index) => (
                   <div 
                     key={index} 
-                    className="reveal flex items-center gap-4 p-4 rounded-xl bg-orange-50 group hover:bg-orange-100 transition-all duration-300"
+                    className="reveal flex items-center gap-4 p-4 rounded-xl bg-blue-50 group hover:bg-blue-100 transition-all duration-300"
                     style={{ transitionDelay: `${index * 100}ms` }}
                   >
-                    <div className="bg-orange-500 w-12 h-12 rounded-lg flex items-center justify-center shrink-0
+                    <div className="bg-blue-600 w-12 h-12 rounded-lg flex items-center justify-center shrink-0
                                  group-hover:scale-110 transition-transform duration-300">
                       {React.createElement(stat.icon, { className: 'w-6 h-6 text-white' })}
                     </div>
                     <div>
-                      <div className="text-2xl font-bold text-gray-900 group-hover:text-orange-500 transition-colors duration-300">
+                      <div className="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
                         {stat.number}
                       </div>
                       <div className="text-sm text-gray-600">
@@ -366,14 +432,32 @@ const Home = () => {
         <div className="absolute bottom-20 left-0 w-80 h-80 bg-blue-50 rounded-full opacity-50 blur-3xl"></div>
         
         <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center max-w-3xl mx-auto mb-16 reveal">
-            <span className="inline-block px-4 py-1 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">OUR EXPERTISE</span>
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900">
-              Innovative Digital <span className="text-orange-500">Solutions</span>
+          <div className="text-left sm:text-center max-w-3xl mx-auto mb-16 reveal">
+            <span className="inline-block px-4 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium mb-4">RESULTS-DRIVEN SOLUTIONS</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 leading-tight">
+              Grow Your Business <span className="text-blue-600">Guaranteed</span>
             </h2>
-            <p className="text-gray-600 text-lg">
-              We provide cutting-edge services to transform your business with modern technology and creative strategies.
+            <p className="text-gray-600 text-base sm:text-lg">
+              Choose the services that best match your business goals. Each solution is custom-tailored to deliver measurable results within your timeline and budget.
             </p>
+            <div className="flex flex-wrap justify-start sm:justify-center items-center gap-4 mt-6">
+              <div className="flex items-center gap-2">
+                <Check className="w-5 h-5 text-green-500" />
+                <span className="text-gray-700">Custom Strategy</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Check className="w-5 h-5 text-green-500" />
+                <span className="text-gray-700">30-Day Results</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Check className="w-5 h-5 text-green-500" />
+                <span className="text-gray-700">Dedicated Support</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Check className="w-5 h-5 text-green-500" />
+                <span className="text-gray-700">Performance Tracking</span>
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -641,25 +725,164 @@ const Home = () => {
                             transform scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></div>
             </div>
           </div>
+
+          {/* Additional Services in Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+            {/* Research & Academic Writing */}
+            <div className="reveal group relative overflow-hidden rounded-2xl bg-white transition-all duration-500 hover:shadow-2xl border border-gray-100 hover:border-indigo-200"
+                style={{ transitionDelay: '600ms', boxShadow: '0 10px 40px -15px rgba(0, 0, 0, 0.1)' }}>
+            <div className="relative h-52 overflow-hidden">
+              <img 
+                src="https://res.cloudinary.com/dtbzsezyo/image/upload/v1720010667/academic-research_nclsuy.jpg" 
+                alt="Research & Academic Writing"
+                className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/70"></div>
+              <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2 shadow-lg">
+                <FileText className="w-6 h-6 text-indigo-500" />
+              </div>
+              <div className="absolute bottom-0 left-0 p-4">
+                <div className="inline-block px-2 py-1 bg-indigo-500 text-white text-xs font-semibold rounded-md">
+                  📝 Research & Writing
+                </div>
+              </div>
+            </div>
+            
+            <div className="p-6 relative">
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold text-gray-900 group-hover:text-indigo-500 transition-all duration-300">
+                  Research & Academic Writing
+                </h3>
+                <div className="flex flex-wrap gap-2 my-3">
+                  <span className="inline-block px-2 py-1 bg-indigo-50 text-indigo-600 text-xs rounded-md">Research Papers</span>
+                  <span className="inline-block px-2 py-1 bg-blue-50 text-blue-600 text-xs rounded-md">Thesis Projects</span>
+                  <span className="inline-block px-2 py-1 bg-violet-50 text-violet-600 text-xs rounded-md">Academic Excellence</span>
+                </div>
+                <p className="text-gray-600 group-hover:text-gray-700 transition-all duration-300">
+                  Expert research and academic writing services delivered by PhD specialists across all disciplines with meticulous attention to academic standards.
+                </p>
+                <Link to="/services/research-academic-writing" 
+                  className="inline-flex items-center text-indigo-500 font-semibold hover:text-indigo-600 transition-colors duration-300 group/learn mt-2">
+                  Learn More
+                  <ArrowRight className="w-4 h-4 ml-2 transform group-hover/learn:translate-x-1 transition-transform duration-300" />
+                </Link>
+              </div>
+            </div>
+            <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500/0 via-indigo-500 to-indigo-500/0 
+                          transform scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></div>
+            </div>
+            
+            {/* Security Services */}
+            <div className="reveal group relative overflow-hidden rounded-2xl bg-white transition-all duration-500 hover:shadow-2xl border border-gray-100 hover:border-blue-200"
+                style={{ transitionDelay: '650ms', boxShadow: '0 10px 40px -15px rgba(0, 0, 0, 0.1)' }}>
+              <div className="relative h-52 overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" 
+                  alt="Security Services"
+                  className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/70"></div>
+                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2 shadow-lg">
+                  <Shield className="w-6 h-6 text-blue-600" />
+                </div>
+                <div className="absolute bottom-0 left-0 p-4">
+                  <div className="inline-block px-2 py-1 bg-blue-600 text-white text-xs font-semibold rounded-md">
+                    🔒 Cybersecurity
+                  </div>
+                </div>
+              </div>
+              
+              <div className="p-6 relative">
+                <div className="space-y-4">
+                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-all duration-300">
+                    Enterprise Security Solutions
+                  </h3>
+                  <div className="flex flex-wrap gap-2 my-3">
+                    <span className="inline-block px-2 py-1 bg-blue-50 text-blue-600 text-xs rounded-md">Threat Protection</span>
+                    <span className="inline-block px-2 py-1 bg-indigo-50 text-indigo-600 text-xs rounded-md">Data Encryption</span>
+                    <span className="inline-block px-2 py-1 bg-sky-50 text-sky-600 text-xs rounded-md">24/7 Monitoring</span>
+                  </div>
+                  <p className="text-gray-600 group-hover:text-gray-700 transition-all duration-300">
+                    Comprehensive security solutions to protect your digital assets, prevent breaches, and ensure business continuity with enterprise-grade safeguards.
+                  </p>
+                  <Link to="/services/security-services" 
+                    className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors duration-300 group/learn mt-2">
+                    Learn More
+                    <ArrowRight className="w-4 h-4 ml-2 transform group-hover/learn:translate-x-1 transition-transform duration-300" />
+                  </Link>
+                </div>
+              </div>
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600/0 via-blue-600 to-blue-600/0 
+                            transform scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></div>
+            </div>
+          
+
+            {/* Paid Advertising (Google & Meta) */}
+            <div className="reveal group relative overflow-hidden rounded-2xl bg-white transition-all duration-500 hover:shadow-2xl border border-gray-100 hover:border-gradient-to-r hover:from-red-200 hover:to-blue-200"
+                style={{ transitionDelay: '700ms', boxShadow: '0 10px 40px -15px rgba(0, 0, 0, 0.1)' }}>
+            <div className="relative h-52 overflow-hidden">
+              <img 
+                src="https://res.cloudinary.com/dtbzsezyo/image/upload/v1720015115/google-meta-ads_jnwcvg.jpg" 
+                alt="Paid Advertising"
+                className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/70"></div>
+              <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2 shadow-lg">
+                <Target className="w-6 h-6 text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-blue-500" />
+              </div>
+              <div className="absolute bottom-0 left-0 p-4">
+                <div className="inline-block px-2 py-1 bg-gradient-to-r from-red-500 to-blue-500 text-white text-xs font-semibold rounded-md">
+                  🎯 Paid Advertising
+                </div>
+              </div>
+            </div>
+            
+            <div className="p-6 relative">
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold text-gray-900 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-red-600 group-hover:to-blue-600 transition-all duration-300">
+                  Google & Meta Advertising
+                </h3>
+                <div className="flex flex-wrap gap-2 my-3">
+                  <span className="inline-block px-2 py-1 bg-red-50 text-red-600 text-xs rounded-md">Google Ads</span>
+                  <span className="inline-block px-2 py-1 bg-blue-50 text-blue-600 text-xs rounded-md">Meta Ads</span>
+                  <span className="inline-block px-2 py-1 bg-purple-50 text-purple-600 text-xs rounded-md">ROI Focused</span>
+                </div>
+                <p className="text-gray-600 group-hover:text-gray-700 transition-all duration-300">
+                  Data-driven paid advertising campaigns across Google and Meta platforms that target the right audience and maximize your marketing ROI.
+                </p>
+                <Link to="/services/paid-advertising" 
+                  className="inline-flex items-center text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-blue-500 font-semibold hover:from-red-600 hover:to-blue-600 transition-colors duration-300 group/learn mt-2">
+                  Learn More
+                  <ArrowRight className="w-4 h-4 ml-2 transform group-hover/learn:translate-x-1 transition-transform duration-300" />
+                </Link>
+              </div>
+            </div>
+            <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-red-500/0 via-red-500 to-blue-500/0 
+                          transform scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></div>
+            </div>
+          </div>
           
           {/* View All Services Button */}
           <div className="mt-16 text-center reveal">
-            <button className="px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl font-semibold 
-                        hover:from-orange-600 hover:to-orange-700 transition-all duration-300 
-                        shadow-lg hover:shadow-orange-500/20 transform hover:-translate-y-1">
+            <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-semibold 
+                        hover:from-blue-700 hover:to-blue-800 transition-all duration-300 
+                        shadow-lg hover:shadow-blue-500/20 transform hover:-translate-y-1">
               View All Services
             </button>
           </div>
         </div>
       </section>
 
+      {/* Featured Projects Section */}
+      <FeaturedProjects />
+
       {/* Why Choose Us Section */}
       <section className="py-24 bg-gray-50 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-orange-500/5 rounded-bl-full"></div>
-        <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-orange-500/5 rounded-tr-full"></div>
+        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-blue-600/5 rounded-bl-full"></div>
+        <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-blue-600/5 rounded-tr-full"></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-16 reveal">
-            <span className="text-orange-500 font-semibold text-lg mb-4 block reveal-from-bottom">Why Choose Us</span>
+            <span className="text-blue-600 font-semibold text-lg mb-4 block reveal-from-bottom">Why Choose Us</span>
             <h2 className="text-4xl font-bold mb-6 text-gray-900">Driving Digital Innovation Since 2024</h2>
             <p className="text-gray-600 text-lg">
               Empowering businesses across Kenya with cutting-edge digital solutions and transformative strategies.
@@ -688,7 +911,7 @@ const Home = () => {
             ].map((feature, index) => (
               <div
                 key={index}
-                className="reveal group relative overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-300 hover:shadow-xl hover:border-orange-500/20 border border-transparent"
+                className="reveal group relative overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-300 hover:shadow-xl hover:border-blue-600/20 border border-transparent"
                 style={{ 
                   transitionDelay: `${index * 100}ms`,
                   boxShadow: '0 10px 30px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
@@ -703,20 +926,20 @@ const Home = () => {
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60"></div>
                 </div>
                 <div className="p-8 relative">
-                  <div className="bg-orange-500 w-16 h-16 rounded-xl flex items-center justify-center mb-6 -mt-16 relative z-10 mx-auto
+                  <div className="bg-blue-600 w-16 h-16 rounded-xl flex items-center justify-center mb-6 -mt-16 relative z-10 mx-auto
                                shadow-lg group-hover:rotate-6 transition-all duration-300">
                     <div className="text-white transition-all duration-300">
                       {React.createElement(feature.icon, { className: 'w-8 h-8' })}
                     </div>
                   </div>
-                  <h3 className="text-xl font-semibold mb-4 text-gray-900 text-center group-hover:text-orange-500 transition-all duration-300">
+                  <h3 className="text-xl font-semibold mb-4 text-gray-900 text-center group-hover:text-blue-600 transition-all duration-300">
                     {feature.title}
                   </h3>
                   <p className="text-gray-600 text-center group-hover:text-gray-700 transition-all duration-300">
                     {feature.description}
                   </p>
                 </div>
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-orange-500/0 via-orange-500 to-orange-500/0 
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600/0 via-blue-600 to-blue-600/0 
                               transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></div>
               </div>
             ))}
@@ -756,26 +979,26 @@ const Home = () => {
             ].map((testimonial, index) => (
               <div 
                 key={index} 
-                className="reveal bg-white rounded-xl p-8 group relative overflow-hidden border border-gray-100 hover:border-orange-500/20 transition-all duration-300"
+                className="reveal bg-white rounded-xl p-8 group relative overflow-hidden border border-gray-100 hover:border-blue-600/20 transition-all duration-300"
                 style={{ 
                   transitionDelay: `${index * 100}ms`,
                   boxShadow: '0 10px 30px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
                 }}
               >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-bl-full -mr-16 -mt-16 transition-all duration-300 group-hover:bg-orange-500/20"></div>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600/10 rounded-bl-full -mr-16 -mt-16 transition-all duration-300 group-hover:bg-blue-600/20"></div>
                 <div className="relative z-10">
                   <div className="flex items-center mb-8">
                     <img 
                       src={testimonial.image} 
                       alt={testimonial.name} 
-                      className="w-16 h-16 rounded-full object-cover mr-4 border-2 border-orange-500/20"
+                      className="w-16 h-16 rounded-full object-cover mr-4 border-2 border-blue-600/20"
                     />
                     <div>
                       <h3 className="text-lg font-semibold text-gray-900">{testimonial.name}</h3>
                       <p className="text-gray-600">{testimonial.position}</p>
                     </div>
                   </div>
-                  <blockquote className="text-gray-600 relative pl-4 border-l-2 border-orange-500/30">
+                  <blockquote className="text-gray-600 relative pl-4 border-l-2 border-blue-600/30">
                     "{testimonial.quote}"
                   </blockquote>
                 </div>
@@ -786,42 +1009,114 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-16 bg-gradient-to-br from-blue-900 via-blue-900/95 to-blue-800/90">
-        {/* Subtle pattern overlay */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            backgroundSize: '30px 30px'
-          }}></div>
-        </div>
+      <section className="py-24 bg-[#0c2249] text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-pattern opacity-10"></div>
+        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-blue-400/20 rounded-bl-full transform rotate-6"></div>
+        <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-blue-400/20 rounded-tr-full transform -rotate-6"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 bg-blue-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 right-1/4 w-24 h-24 bg-blue-400/30 rounded-full blur-xl"></div>
+        <div className="absolute bottom-1/4 left-1/4 w-32 h-32 bg-blue-400/30 rounded-full blur-xl"></div>
+        <div className="absolute bottom-0 right-0 w-16 h-16 bg-blue-400/30 rounded-full blur-md"></div>
+        <div className="absolute top-0 left-0 w-12 h-12 bg-blue-400/30 rounded-full blur-md"></div>
+        <div className="absolute top-1/3 left-2/3 w-20 h-20 bg-blue-400/30 rounded-full blur-lg"></div>
+        <div className="absolute bottom-1/3 right-2/3 w-28 h-28 bg-blue-400/30 rounded-full blur-lg"></div>
+        <div className="absolute bottom-1/2 right-1/2 w-36 h-36 bg-blue-400/30 rounded-full blur-xl"></div>
+        <div className="absolute top-1/2 left-1/2 w-40 h-40 bg-blue-400/30 rounded-full blur-xl"></div>
+        <div className="absolute -bottom-10 left-1/4 w-64 h-64 bg-blue-400/20 rounded-full blur-2xl"></div>
+        <div className="absolute -top-10 right-1/4 w-64 h-64 bg-blue-400/20 rounded-full blur-2xl"></div>
+        <div className="absolute -top-20 -left-20 w-80 h-80 bg-blue-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-blue-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute inset-0 bg-grid-white/5"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-800/5 to-blue-900/10"></div>
         
         <div className="container mx-auto px-6 relative">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="mb-8">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white leading-tight">
-                Ready to Transform Your Digital Presence?
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div className="text-left">
+              <div className="inline-block px-3 py-1 bg-blue-400/30 text-white rounded-full text-sm font-semibold mb-6">
+                LIMITED TIME OFFER
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white leading-tight">
+                Ready for Measurable Results in Just <span className="text-blue-200">30 Days?</span>
               </h2>
-              <p className="text-lg mb-8 text-white/80 leading-relaxed max-w-2xl mx-auto">
-                Join hundreds of successful businesses that have revolutionized their digital strategy.
+              <p className="text-lg mb-8 text-white/90 leading-relaxed">
+                Join the <span className="font-bold text-blue-200">500+ businesses</span> who have transformed their digital presence and significantly increased their revenue with our proven strategies.
               </p>
+              
+              <div className="space-y-4 mb-8">
+                {[
+                  "Free Strategy Session Worth KSh 25,000",
+                  "Custom Growth Plan for Your Business",
+                  "30-Day Performance Guarantee",
+                  "No Long-Term Contracts Required"
+                ].map((benefit, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <div className="bg-blue-400 rounded-full p-1 mt-1 flex-shrink-0">
+                      <Check className="w-4 h-4 text-white" />
+                    </div>
+                    <p className="text-white/90">{benefit}</p>
+                  </div>
+                ))}
+              </div>
+              
+              <div className="inline-block bg-blue-100 text-blue-800 px-3 py-2 rounded text-sm font-semibold mb-6 animate-pulse">
+                <span className="font-bold">⚡ Only 3 spots available this week</span> - Schedule your free consultation now
+              </div>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button 
-                onClick={handleContactClick}
-                className="bg-white/90 text-blue-900 hover:bg-white px-8 py-3 rounded-lg text-lg font-semibold 
-                         transition-all transform hover:scale-105 hover:shadow-lg flex items-center group"
-              >
-                Get Started
-                <ArrowRight className="w-5 h-5 ml-2 transform transition-transform group-hover:translate-x-1" />
-              </button>
-              <button 
-                onClick={handleContactClick}
-                className="border border-white/20 text-white hover:bg-white/10 px-8 py-3 rounded-lg 
-                         transition-all backdrop-blur-sm"
-              >
-                Contact Us
-              </button>
+            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 shadow-2xl">
+              <h3 className="text-2xl font-bold mb-6 text-center text-white">Get Your Free Strategy Session</h3>
+              
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <button 
+                    onClick={handleWhatsApp}
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-4 rounded-lg transition-all flex items-center justify-center gap-2 group"
+                  >
+                    <img 
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/2044px-WhatsApp.svg.png" 
+                      alt="WhatsApp"
+                      className="w-6 h-6 object-contain"
+                    />
+                    <span>WhatsApp</span>
+                    <ArrowRight className="w-4 h-4 transform transition-transform group-hover:translate-x-1" />
+                  </button>
+                  
+                  <button 
+                    onClick={handleEmail}
+                    className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-4 rounded-lg transition-all flex items-center justify-center gap-2 group"
+                  >
+                    <img 
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/2560px-Gmail_icon_%282020%29.svg.png" 
+                      alt="Email"
+                      className="w-6 h-6 object-contain"
+                    />
+                    <span>Email</span>
+                    <ArrowRight className="w-4 h-4 transform transition-transform group-hover:translate-x-1" />
+                  </button>
+                </div>
+                
+                <div className="text-center text-white/80 text-sm">
+                  <p className="mb-1">Or call us directly at:</p>
+                  <a href="tel:+254755295635" className="text-lg font-bold text-white hover:text-yellow-300 transition-colors flex items-center justify-center gap-2">
+                    <Phone className="w-5 h-5" />
+                    +254 755 295 635
+                  </a>
+                </div>
+                
+                <div className="border-t border-white/20 pt-4 mt-4">
+                  <div className="flex items-center justify-center gap-4 mb-3">
+                    <div className="flex">
+                      {[1, 2, 3, 4, 5].map((_, i) => (
+                        <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      ))}
+                    </div>
+                    <span className="text-white/90 text-sm">Rated 4.9/5 by 500+ clients</span>
+                  </div>
+                  <p className="text-white/60 text-xs text-center">No obligations. Cancel anytime. Your information is secure and will never be shared.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -848,15 +1143,27 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/services/web-development" element={<WebDevelopment />} />
-        <Route path="/services/ai-development" element={<AIDevelopment />} />
-        <Route path="/services/custom-ai-agents" element={<CustomAIAgents />} />
-        <Route path="/services/social-media-marketing" element={<SocialMediaMarketing />} />
-        <Route path="/services/search-engine-optimization" element={<SearchEngineOptimization />} />
-        <Route path="/services/data-analytics" element={<DataAnalytics />} />
-      </Routes>
+      <div className="min-h-screen flex flex-col">
+        {/* Import Navbar for consistent navigation across all pages */}
+        <Navbar />
+        {/* Add top padding to all routes to accommodate fixed navbar */}
+        <div className="pt-16 sm:pt-18 md:pt-20 flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/services/web-development" element={<WebDevelopment />} />
+            <Route path="/services/ai-development" element={<AIDevelopment />} />
+            <Route path="/services/custom-ai-agents" element={<CustomAIAgents />} />
+            <Route path="/services/social-media-marketing" element={<SocialMediaMarketing />} />
+            <Route path="/services/search-engine-optimization" element={<SearchEngineOptimization />} />
+            <Route path="/services/data-analytics" element={<DataAnalytics />} />
+            <Route path="/services/research-academic-writing" element={<ResearchAndAcademicWriting />} />
+            <Route path="/services/paid-advertising" element={<PaidAdvertising />} />
+            <Route path="/services/security-services" element={<SecurityServices />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/portfolio/:projectId" element={<ProjectDetail />} />
+          </Routes>
+        </div>
+      </div>
     </Router>
   );
 }

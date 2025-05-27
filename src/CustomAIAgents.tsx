@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowRight, Bot, Brain, MessageSquare, Database, FileText, Clock, CheckCircle, Users, Mail, Zap, Shield, Search, LineChart } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Bot, Brain, MessageSquare, Database, FileText, Clock, CheckCircle, Users, Mail, Zap, Shield, Search, LineChart, Menu } from 'lucide-react';
 
 // Color helper functions
 const getGradientByColor = (color: string): string => {
@@ -100,6 +101,16 @@ const getHoverTextByColor = (color: string): string => {
 
 const CustomAIAgents = () => {
   const [animatedStep, setAnimatedStep] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Toggle mobile menu
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const closeAllMenus = () => {
+    setMobileMenuOpen(false);
+  };
 
   // Handle CTA button click
   const handleCTAClick = () => {
@@ -131,8 +142,42 @@ const CustomAIAgents = () => {
 
   return (
     <div className="font-sans antialiased text-gray-800">
+      {/* Navbar - Simplified mobile-first design */}
+      <nav className="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center py-2">
+            {/* Logo */}
+            <Link to="/" className="flex items-center space-x-2">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 flex items-center justify-center">
+                <Bot className="w-5 h-5 text-white" />
+              </div>
+              <div className="font-bold text-lg text-gray-900">Global Expert<span className="text-violet-600">.</span></div>
+            </Link>
+
+            {/* Mobile Menu Button */}
+            <button 
+              className="text-gray-700 focus:outline-none" 
+              onClick={toggleMobileMenu}
+            >
+              <Menu className="w-6 h-6" />
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        <div className={`bg-white ${mobileMenuOpen ? 'block' : 'hidden'}`}>
+          <div className="px-4 py-3 space-y-1">
+            <Link to="/" className="block px-4 py-2 text-gray-800 hover:bg-violet-50 hover:text-violet-600 rounded-lg transition-colors duration-300" onClick={closeAllMenus}>Home</Link>
+            <Link to="/services" className="block px-4 py-2 text-gray-800 hover:bg-violet-50 hover:text-violet-600 rounded-lg transition-colors duration-300" onClick={closeAllMenus}>Services</Link>
+            <Link to="/portfolio" className="block px-4 py-2 text-gray-800 hover:bg-violet-50 hover:text-violet-600 rounded-lg transition-colors duration-300" onClick={closeAllMenus}>Portfolio</Link>
+            <Link to="/about" className="block px-4 py-2 text-gray-800 hover:bg-violet-50 hover:text-violet-600 rounded-lg transition-colors duration-300" onClick={closeAllMenus}>About</Link>
+            <Link to="/contact" className="block px-4 py-2 text-violet-600 font-medium hover:bg-violet-50 rounded-lg transition-colors duration-300" onClick={closeAllMenus}>Contact Us</Link>
+          </div>
+        </div>
+      </nav>
+      
       {/* Hero Section with Floating 3D Elements */}
-      <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-violet-50 via-white to-fuchsia-50">
+      <section className="relative pt-24 pb-20 mt-16 overflow-hidden bg-gradient-to-br from-violet-50 via-white to-fuchsia-50">
         {/* Animated background elements */}
         <div className="absolute inset-0">
           {/* Decorative elements - like WebDevelopment page */}
@@ -177,41 +222,98 @@ const CustomAIAgents = () => {
           <div className="flex flex-col lg:flex-row items-center gap-12">
             {/* Content */}
             <div className="lg:w-1/2 ">
-              <div className="inline-block px-3 py-1 bg-violet-100 text-violet-600 rounded-full text-sm font-semibold mb-2 animate-pulse">
-                Premium AI Automation
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-violet-100 to-fuchsia-100 rounded-full text-sm font-semibold mb-2 animate-pulse">
+                <Bot className="w-4 h-4 text-violet-600" />
+                <span className="bg-gradient-to-r from-violet-600 to-fuchsia-600 text-transparent bg-clip-text font-bold">
+                  AI Automation Experts | 85% Time Reduction
+                </span>
               </div>
               
               <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
-                <span className="block text-gray-900">Custom AI Agents for</span>
+                <span className="block text-gray-900">Save 40+ Hours/Week</span>
                 <div className="relative">
                   <span className="block bg-gradient-to-r from-violet-600 via-fuchsia-500 to-violet-500 text-transparent bg-clip-text">
-                    Task Automation
+                    With Custom AI Agents
                   </span>
                   <div className="absolute -bottom-2 left-0 h-1 w-full bg-gradient-to-r from-violet-600 via-fuchsia-500 to-violet-500 rounded-full transform scale-x-0 transition-transform duration-1000 animate-scale-x-full"></div>
                 </div>
               </h1>
               
-              <p className="text-xl text-gray-600 leading-relaxed">
-                We build intelligent systems designed specifically to automate your unique business tasks—whether it's responding to emails, managing inventory, extracting data, or summarizing meetings.
+              <p className="text-xl text-gray-700 leading-relaxed font-medium">
+                <strong>Stop wasting time on repetitive tasks.</strong> Our AI agents work 24/7 to handle your emails, data extraction, customer service, and more—with <strong>human-like intelligence</strong> at machine speed.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4">
+              {/* ROI Stats */}
+              <div className="grid grid-cols-3 gap-4 my-6">
+                <div className="bg-white rounded-lg shadow-md p-3 text-center border border-violet-100 hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                  <div className="text-2xl font-bold bg-gradient-to-r from-violet-600 to-fuchsia-500 text-transparent bg-clip-text">85%</div>
+                  <div className="text-xs text-gray-600">Time Saved</div>
+                </div>
+                <div className="bg-white rounded-lg shadow-md p-3 text-center border border-violet-100 hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                  <div className="text-2xl font-bold bg-gradient-to-r from-fuchsia-500 to-violet-600 text-transparent bg-clip-text">24/7</div>
+                  <div className="text-xs text-gray-600">Availability</div>
+                </div>
+                <div className="bg-white rounded-lg shadow-md p-3 text-center border border-violet-100 hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                  <div className="text-2xl font-bold bg-gradient-to-r from-violet-600 to-fuchsia-500 text-transparent bg-clip-text">192%</div>
+                  <div className="text-xs text-gray-600">Average ROI</div>
+                </div>
+              </div>
+              
+              {/* Client testimonial */}
+              <div className="bg-gradient-to-r from-violet-50 to-fuchsia-50 p-4 rounded-lg mb-6 border border-violet-100">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-r from-violet-200 to-fuchsia-200 flex items-center justify-center font-bold text-violet-700">KP</div>
+                  <div>
+                    <div className="font-semibold">Kenya Power & Lighting</div>
+                    <div className="text-sm text-gray-600">Customer Support Department</div>
+                  </div>
+                </div>
+                <p className="text-sm italic text-gray-700 mb-2">
+                  "The AI agent handles 73% of our customer inquiries without human intervention. Our support team now focuses on complex issues while response times decreased from 24 hours to 3 minutes."
+                </p>
+                <div className="flex items-center gap-1">
+                  {[1, 2, 3, 4, 5].map((_, i) => (
+                    <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-4 mb-4">
                 <button 
                   onClick={handleCTAClick}
-                  className="px-8 py-4 bg-violet-500 text-white rounded-xl font-semibold 
-                          hover:bg-violet-600 transition-all duration-300 transform hover:scale-105
+                  className="px-8 py-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white rounded-xl font-bold 
+                          hover:from-violet-700 hover:to-fuchsia-700 transition-all duration-300 transform hover:scale-105
                           shadow-lg hover:shadow-violet-500/20 flex items-center justify-center gap-2 group">
-                  Let's Build Your Agent
+                  Get Free AI Consultation
                   <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
                 </button>
                 
-                <a href="#use-cases" 
-                   className="px-8 py-4 border-2 border-gray-300 text-gray-700 rounded-xl font-semibold
-                          hover:border-violet-500 hover:text-violet-500 hover:bg-violet-50 
-                          transition-all duration-300 flex items-center justify-center gap-2 group">
-                  Explore Use Cases
-                  <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
-                </a>
+                <div className="flex items-center text-violet-600 font-medium animate-pulse">
+                  <Clock className="w-4 h-4 mr-2" />
+                  <span className="text-sm">Limited Offer: 30-Day Free Trial + Implementation</span>
+                </div>
+              </div>
+              
+              {/* Trust indicators */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-gray-600 text-sm bg-gradient-to-r from-gray-50 to-violet-50 p-3 rounded-lg">
+                <div className="flex items-center gap-1">
+                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <span><strong>Custom</strong> Solutions</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <span><strong>No-Code</strong> Setup</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <span><strong>Secure</strong> Data</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <span><strong>Fast</strong> Deployment</span>
+                </div>
               </div>
             </div>
             
@@ -318,47 +420,47 @@ const CustomAIAgents = () => {
         </div>
       </section>
       
-      {/* Why Businesses Need Custom AI Agents Section - Redesigned */}
-      <section className="py-14 bg-gradient-to-b from-gray-50 to-white">
-        <div className="container mx-auto px-6">
+      {/* Why Businesses Need Custom AI Agents Section - Mobile Responsive */}
+      <section className="py-10 sm:py-14 bg-gradient-to-b from-gray-50 to-white">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
-            <div className="mb-6 lg:mb-0 max-w-md">
-              <div className="inline-flex items-center px-3 py-1 rounded-full bg-violet-100 text-violet-600 text-xs font-medium mb-3">
+            <div className="mb-6 lg:mb-0 max-w-md px-2 sm:px-0">
+              <div className="inline-flex items-center px-2 sm:px-3 py-1 rounded-full bg-violet-100 text-violet-600 text-xs font-medium mb-2 sm:mb-3">
                 <span className="mr-1">💡</span> Benefits of Custom AI Agents
               </div>
               
-              <h2 className="text-2xl md:text-3xl font-bold mb-2">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">
                 Transform Your Business with <span className="bg-gradient-to-r from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">Intelligent Automation</span>
               </h2>
               
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-600 text-xs sm:text-sm">
                 Our custom AI agents deliver substantial advantages, from enhanced productivity to cost savings and improved accuracy.
               </p>
             </div>
             
-            {/* Stats bar - interactive and compact */}
-            <div className="flex flex-wrap gap-2 lg:gap-4 justify-center lg:justify-end">
+            {/* Stats bar - Mobile Responsive */}
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 lg:gap-4 justify-center lg:justify-end">
               {[
-                { value: "10x", label: "Productivity", icon: <Zap className="w-4 h-4" />, color: "violet", description: "Boost efficiency on routine tasks" },
-                { value: "24/7", label: "Availability", icon: <Clock className="w-4 h-4" />, color: "fuchsia", description: "Zero downtime, continuous operation" },
-                { value: "99.8%", label: "Accuracy", icon: <CheckCircle className="w-4 h-4" />, color: "blue", description: "Consistent output with minimal errors" },
-                { value: "60%", label: "Cost Reduction", icon: <LineChart className="w-4 h-4" />, color: "amber", description: "Save on hiring and training costs" }
+                { value: "10x", label: "Productivity", icon: <Zap className="w-3 h-3 sm:w-4 sm:h-4" />, color: "violet", description: "Boost efficiency on routine tasks" },
+                { value: "24/7", label: "Availability", icon: <Clock className="w-3 h-3 sm:w-4 sm:h-4" />, color: "fuchsia", description: "Zero downtime, continuous operation" },
+                { value: "99.8%", label: "Accuracy", icon: <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4" />, color: "blue", description: "Consistent output with minimal errors" },
+                { value: "60%", label: "Cost Reduction", icon: <LineChart className="w-3 h-3 sm:w-4 sm:h-4" />, color: "amber", description: "Save on hiring and training costs" }
               ].map((stat, index) => (
-                <div key={index} className="group relative">
-                  <div className={`flex items-center gap-2 py-1.5 px-3 rounded-md ${getLightBgByColor(stat.color)} 
+                <div key={index} className="group relative mt-1 mb-1 sm:mt-0 sm:mb-0">
+                  <div className={`flex items-center gap-1 sm:gap-2 py-1 sm:py-1.5 px-2 sm:px-3 rounded-md ${getLightBgByColor(stat.color)} 
                                   hover:shadow-md transition-all duration-300 cursor-pointer`}>
-                    <div className={`w-8 h-8 rounded-full ${getBackgroundByColor(stat.color)} text-white 
+                    <div className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full ${getBackgroundByColor(stat.color)} text-white 
                                   flex items-center justify-center`}>
                       {stat.icon}
                     </div>
                     <div>
-                      <div className={`text-base font-bold ${getTextByColor(stat.color)}`}>{stat.value}</div>
-                      <div className="text-xs text-gray-600">{stat.label}</div>
+                      <div className={`text-sm sm:text-base font-bold ${getTextByColor(stat.color)}`}>{stat.value}</div>
+                      <div className="text-[10px] sm:text-xs text-gray-600">{stat.label}</div>
                     </div>
                   </div>
                   
-                  {/* Tooltip on hover */}
-                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-max max-w-[180px] 
+                  {/* Tooltip on hover - hidden on mobile */}
+                  <div className="hidden sm:block absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-max max-w-[180px] 
                               bg-gray-800 text-white text-xs rounded-lg py-1.5 px-2 opacity-0 invisible group-hover:opacity-100 
                               group-hover:visible transition-all duration-300 z-10 pointer-events-none">
                     {stat.description}
@@ -370,10 +472,10 @@ const CustomAIAgents = () => {
             </div>
           </div>
           
-          {/* Benefits - Modern Interactive Design with Side-by-Side Layout */}
-          <div className="relative mb-12">
+          {/* Benefits - Mobile Responsive Design */}
+          <div className="relative mb-8 sm:mb-12 px-2 sm:px-0">
             {/* Benefits content */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-6 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-4 sm:gap-x-8 lg:gap-x-16 gap-y-4 sm:gap-y-6 max-w-6xl mx-auto">
               {[
                 {
                   icon: <Clock className="w-5 h-5" />,
@@ -418,29 +520,29 @@ const CustomAIAgents = () => {
                          hover:shadow-md transition-all duration-300 group"
                   style={{animationDelay: `${index * 0.05}s`}}
                 >
-                  <div className="flex items-center p-3">
+                  <div className="flex items-center p-2 sm:p-3">
                     {/* Icon */}
                     <div className="relative z-10 flex-shrink-0">
-                      <div className={`w-10 h-10 rounded-full ${getBackgroundByColor(benefit.color)} text-white 
+                      <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full ${getBackgroundByColor(benefit.color)} text-white 
                                 shadow-md flex items-center justify-center transform transition-all duration-300 
                                 group-hover:scale-110`}>
-                        {benefit.icon}
+                        <div className="w-4 h-4 sm:w-5 sm:h-5">{benefit.icon}</div>
                       </div>
                     </div>
                     
                     {/* Content */}
-                    <div className="ml-4 flex-grow">
-                      <h3 className="text-sm font-semibold text-gray-800 mb-0.5 group-hover:text-violet-600 transition-colors duration-300">
+                    <div className="ml-3 sm:ml-4 flex-grow">
+                      <h3 className="text-xs sm:text-sm font-semibold text-gray-800 mb-0.5 group-hover:text-violet-600 transition-colors duration-300">
                         {benefit.title}
                       </h3>
                       
-                      <p className="text-xs text-gray-600 m-0">
+                      <p className="text-[10px] sm:text-xs text-gray-600 m-0 line-clamp-2 sm:line-clamp-none">
                         {benefit.description}
                       </p>
                     </div>
                     
                     {/* Colored indicator */}
-                    <div className={`w-1.5 h-10 ${getBackgroundByColor(benefit.color)} rounded-full ml-2 opacity-70`}></div>
+                    <div className={`w-1 sm:w-1.5 h-8 sm:h-10 ${getBackgroundByColor(benefit.color)} rounded-full ml-1 sm:ml-2 opacity-70`}></div>
                   </div>
                 </div>
               ))}

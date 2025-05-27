@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { 
   ArrowRight, Check, Globe, Code, ShoppingCart, Zap, Layout, 
   Database, AlertTriangle, Clock, UserX, Settings, Phone, Mail,
   MonitorSmartphone, Layers, Repeat, Shield, Palette, Star, MessageSquare, Briefcase,
-  FileCode, Brain, BarChart2, Bot, Sparkles, GitBranch, PieChart
+  Brain, BarChart2, Bot, Sparkles, Menu
 } from 'lucide-react';
 
 const WebDevelopment: React.FC = () => {
@@ -55,10 +56,55 @@ const WebDevelopment: React.FC = () => {
 
   // Handler for CTA buttons is defined above
 
+  // Navigation state
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const closeAllMenus = () => {
+    setMobileMenuOpen(false);
+  };
+
   return (
     <div className="min-h-screen bg-white overflow-hidden">
+      {/* Navbar - Simplified mobile-first design */}
+      <nav className="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center py-2">
+            {/* Logo */}
+            <Link to="/" className="flex items-center space-x-2">
+              <div className="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center">
+                <Code className="w-5 h-5 text-white" />
+              </div>
+              <div className="font-bold text-lg text-gray-900">Global Expert<span className="text-orange-500">.</span></div>
+            </Link>
+
+            {/* Mobile Menu Button */}
+            <button 
+              className="text-gray-700 focus:outline-none" 
+              onClick={toggleMobileMenu}
+            >
+              <Menu className="w-6 h-6" />
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        <div className={`bg-white ${mobileMenuOpen ? 'block' : 'hidden'}`}>
+          <div className="px-4 py-3 space-y-1">
+            <Link to="/" className="block px-4 py-2 text-gray-800 hover:bg-orange-50 hover:text-orange-600 rounded-lg transition-colors duration-300" onClick={closeAllMenus}>Home</Link>
+            <Link to="/services" className="block px-4 py-2 text-gray-800 hover:bg-orange-50 hover:text-orange-600 rounded-lg transition-colors duration-300" onClick={closeAllMenus}>Services</Link>
+            <Link to="/portfolio" className="block px-4 py-2 text-gray-800 hover:bg-orange-50 hover:text-orange-600 rounded-lg transition-colors duration-300" onClick={closeAllMenus}>Portfolio</Link>
+            <Link to="/about" className="block px-4 py-2 text-gray-800 hover:bg-orange-50 hover:text-orange-600 rounded-lg transition-colors duration-300" onClick={closeAllMenus}>About</Link>
+            <Link to="/contact" className="block px-4 py-2 text-orange-600 font-medium hover:bg-orange-50 rounded-lg transition-colors duration-300" onClick={closeAllMenus}>Contact Us</Link>
+          </div>
+        </div>
+      </nav>
+      
       {/* Hero Section with Parallax Effect */}
-      <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-blue-50 via-white to-orange-50">
+      <section className="relative pt-24 pb-20 mt-16 overflow-hidden bg-gradient-to-br from-blue-50 via-white to-orange-50">
         {/* Decorative elements */}
         <div 
           className="absolute top-0 right-0 w-1/3 h-1/3 bg-orange-500/5 rounded-bl-full" 
@@ -77,61 +123,98 @@ const WebDevelopment: React.FC = () => {
           }}></div>
         </div>
 
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8 slide-in-left">
-              <div className="space-y-5">
-                <div className="inline-block px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold mb-2 animate-pulse">
-                  Premium Web Development
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div className="space-y-5 sm:space-y-8 slide-in-left">
+              <div className="space-y-4 sm:space-y-5">
+                <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs sm:text-sm font-semibold mb-2 animate-pulse">
+                  <div className="flex -space-x-1">
+                    <div className="w-4 sm:w-5 h-4 sm:h-5 rounded-full bg-orange-500 text-white flex items-center justify-center text-[10px] sm:text-xs">✓</div>
+                    <div className="w-4 sm:w-5 h-4 sm:h-5 rounded-full bg-orange-500 text-white flex items-center justify-center text-[10px] sm:text-xs">✓</div>
+                  </div>
+                  <span className="text-xs sm:text-sm">Trusted By 200+ Kenyan Businesses</span>
                 </div>
-                <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
-                  <span className="block text-gray-900">Build sleek, fast, and</span>
-                  <div className="relative">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-left">
+                  <span className="block text-gray-900">Double Your <br className="md:hidden"/>Online Revenue With</span>
+                  <div className="relative mt-1 sm:mt-2">
                     <span className="block bg-gradient-to-r from-orange-600 via-red-500 to-orange-500 text-transparent bg-clip-text">
-                      conversion-ready websites
+                      Custom Website Solutions
                     </span>
-                    <div className="absolute -bottom-2 left-0 h-1 w-full bg-gradient-to-r from-orange-600 via-red-500 to-orange-500 rounded-full transform scale-x-0 transition-transform duration-1000 animate-scale-x-full"></div>
+                    <div className="absolute -bottom-1 sm:-bottom-2 left-0 h-0.5 sm:h-1 w-full bg-gradient-to-r from-orange-600 via-red-500 to-orange-500 rounded-full transform scale-x-0 transition-transform duration-1000 animate-scale-x-full"></div>
                   </div>
                 </h1>
-                <p className="text-xl text-gray-600 leading-relaxed">
-                  From handcrafted websites to powerful web apps, we blend performance, beauty, and smart functionality 
-                  to help you impress users and drive results.
+                <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed">
+                  <strong>Average 92% increase in leads</strong> for our clients. Get a conversion-optimized website custom-built to attract your ideal customers and grow your business 24/7.
                 </p>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button 
-                  onClick={handleCTAClick} 
-                  className="px-8 py-4 bg-orange-500 text-white rounded-xl font-semibold 
-                          hover:bg-orange-600 transition-all duration-300 transform hover:scale-105
-                          shadow-lg hover:shadow-orange-500/20 flex items-center justify-center gap-2 group"
-                >
-                  Get Started
-                  <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
-                </button>
-                <button 
-                  onClick={handleCTAClick}
-                  className="px-8 py-4 border-2 border-gray-300 text-gray-700 rounded-xl font-semibold
-                          hover:border-orange-500 hover:text-orange-500 hover:bg-orange-50 
-                          transition-all duration-300 flex items-center justify-center gap-2 group"
-                >
-                  View Portfolio
-                  <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
-                </button>
+              {/* Social proof */}
+              <div className="bg-gray-50 border border-gray-100 rounded-lg sm:rounded-xl p-3 sm:p-4 flex items-center gap-3 sm:gap-4">
+                <div className="shrink-0">
+                  <div className="flex">
+                    {[1, 2, 3, 4, 5].map((_, i) => (
+                      <svg key={i} className="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <div className="text-gray-600 font-semibold text-xs sm:text-sm">5.0/5 (127 Reviews)</div>
+                </div>
+                <div className="border-l border-gray-200 pl-3 sm:pl-4">
+                  <div className="italic text-gray-600 text-xs sm:text-sm">"Our new website increased our conversions by 215% in just 3 months."</div>
+                  <div className="text-gray-800 font-semibold text-xs sm:text-sm">— Sarah K., Business Owner</div>
+                </div>
               </div>
               
-              <div className="flex items-center gap-4 text-gray-500 text-sm">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+                <button 
+                  onClick={handleCTAClick} 
+                  className="px-5 sm:px-8 py-3 sm:py-4 bg-orange-500 text-white rounded-lg sm:rounded-xl font-semibold 
+                          hover:bg-orange-600 transition-all duration-300 transform hover:scale-105
+                          shadow-md sm:shadow-lg hover:shadow-orange-500/20 flex items-center justify-center gap-2 group text-sm sm:text-base w-full sm:w-auto"
+                >
+                  Get Free Website Audit
+                  <ArrowRight className="w-4 sm:w-5 h-4 sm:h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
+                </button>
+                <div className="text-xs sm:text-sm text-orange-600 animate-pulse flex items-center">
+                  <Clock className="w-3.5 sm:w-4 h-3.5 sm:h-4 mr-1" />
+                  <span className="whitespace-normal sm:whitespace-nowrap">Limited Time: 50% Off Development + Free SEO</span>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-gray-500 text-xs sm:text-sm">
                 <div className="flex items-center gap-1">
-                  <Check className="w-4 h-4 text-green-500" />
+                  <Check className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-green-500" />
                   <span>100% Responsive</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <Check className="w-4 h-4 text-green-500" />
+                  <Check className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-green-500" />
                   <span>SEO Optimized</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <Check className="w-4 h-4 text-green-500" />
+                  <Check className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-green-500" />
                   <span>Fast Loading</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <Check className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-green-500" />
+                  <span>E-commerce Ready</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <Check className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-green-500" />
+                  <span>30-Day Delivery</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <Check className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-green-500" />
+                  <span>Lifetime Support</span>
+                </div>
+              </div>
+              
+              <div className="pt-3 sm:pt-4">
+                <p className="text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3 text-left">RECENT CLIENTS</p>
+                <div className="flex flex-wrap items-center gap-4 sm:gap-6 justify-start opacity-70 hover:opacity-100 transition-opacity duration-300">
+                  <img src="https://res.cloudinary.com/dtbzsezyo/image/upload/v1720016992/client-logo-1_lqohes.png" alt="Client 1" className="h-6 sm:h-8 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+                  <img src="https://res.cloudinary.com/dtbzsezyo/image/upload/v1720016992/client-logo-2_bwgibr.png" alt="Client 2" className="h-6 sm:h-8 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+                  <img src="https://res.cloudinary.com/dtbzsezyo/image/upload/v1720016992/client-logo-3_vdnajq.png" alt="Client 3" className="h-6 sm:h-8 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
                 </div>
               </div>
             </div>
@@ -302,9 +385,9 @@ const WebDevelopment: React.FC = () => {
             </p>
           </div>
 
-          {/* Feature/Benefit Cards - Space-Efficient Design */}
+          {/* Feature/Benefit Cards - Improved Mobile Responsiveness */}
           <div className="reveal">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-2 sm:px-0">
               {[
                 {
                   feature: "Custom Website Design",
@@ -377,16 +460,16 @@ const WebDevelopment: React.FC = () => {
                 return (
                   <div 
                     key={index} 
-                    className={`flex gap-3 p-3 rounded-lg border hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 cursor-pointer ${colorClasses[item.color as keyof typeof colorClasses]}`}
+                    className={`flex gap-3 p-4 rounded-lg border hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 cursor-pointer ${colorClasses[item.color as keyof typeof colorClasses]}`}
                   >
                     <div className="mt-1">
-                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${iconBgClass.replace('text', 'bg').replace('500', '100')}`}>
+                      <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${iconBgClass.replace('text', 'bg').replace('500', '100')}`}>
                         <div className={iconBgClass.replace('bg', 'text')}>{item.icon}</div>
                       </div>
                     </div>
                     <div className="flex-1">
-                      <div className="font-medium text-gray-800 text-sm">{item.feature}</div>
-                      <div className="text-xs mt-1 text-gray-600 leading-relaxed">{item.benefit}</div>
+                      <div className="font-medium text-gray-800 text-sm sm:text-base">{item.feature}</div>
+                      <div className="text-xs sm:text-sm mt-1 text-gray-600 leading-relaxed">{item.benefit}</div>
                     </div>
                   </div>
                 );
@@ -394,54 +477,57 @@ const WebDevelopment: React.FC = () => {
             </div>
           </div>
 
-          {/* Interactive Service Explorer */}
-          <div className="mt-16 bg-white p-6 sm:p-8 rounded-2xl shadow-lg reveal">
+          {/* Interactive Service Explorer - Mobile Responsive */}
+          <div className="mt-12 sm:mt-16 bg-white p-5 sm:p-8 rounded-2xl shadow-lg reveal mx-2 sm:mx-0">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="col-span-1 md:col-span-2">
-                <h3 className="text-2xl font-bold mb-3 text-gray-900">Need help choosing the right service?</h3>
-                <p className="text-gray-600 mb-6">Tell us about your project goals and timeline, and we'll recommend the perfect web development package for your needs.</p>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-2 will-change-transform hover:-translate-x-1 transition-transform duration-300">
-                    <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
-                    <p className="text-gray-700">Free consultation with a web development expert</p>
+                <h3 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3 text-gray-900">Need help choosing the right service?</h3>
+                <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">Tell us about your project goals and timeline, and we'll recommend the perfect web development package for your needs.</p>
+                <div className="space-y-3 sm:space-y-4">
+                  <div className="flex items-start sm:items-center gap-2 will-change-transform hover:-translate-x-1 transition-transform duration-300">
+                    <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 sm:mt-0" />
+                    <p className="text-gray-700 text-sm sm:text-base">Free consultation with a web development expert</p>
                   </div>
-                  <div className="flex items-center gap-2 will-change-transform hover:-translate-x-1 transition-transform duration-300">
-                    <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
-                    <p className="text-gray-700">Custom quote based on your specific requirements</p>
+                  <div className="flex items-start sm:items-center gap-2 will-change-transform hover:-translate-x-1 transition-transform duration-300">
+                    <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 sm:mt-0" />
+                    <p className="text-gray-700 text-sm sm:text-base">Custom quote based on your specific requirements</p>
                   </div>
-                  <div className="flex items-center gap-2 will-change-transform hover:-translate-x-1 transition-transform duration-300">
-                    <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
-                    <p className="text-gray-700">Transparent pricing with no hidden fees</p>
+                  <div className="flex items-start sm:items-center gap-2 will-change-transform hover:-translate-x-1 transition-transform duration-300">
+                    <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 sm:mt-0" />
+                    <p className="text-gray-700 text-sm sm:text-base">Transparent pricing with no hidden fees</p>
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col justify-center items-center md:items-end space-y-4">
+              <div className="flex flex-col justify-center items-center md:items-end space-y-3 sm:space-y-4 mt-4 md:mt-0">
                 <button 
                   onClick={handleCTAClick}
-                  className="w-full md:w-auto px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl font-semibold 
+                  className="w-full md:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl font-semibold 
                         hover:from-blue-600 hover:to-blue-700 transition-all duration-300 will-change-transform
-                        shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-1 flex items-center justify-center gap-2 group">
+                        shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-1 flex items-center justify-center gap-2 group
+                        text-sm sm:text-base">
                   Get Custom Quote
-                  <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
+                  <ArrowRight className="w-4 sm:w-5 h-4 sm:h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
                 </button>
                 <button 
                   onClick={handleCTAClick}
-                  className="w-full md:w-auto px-8 py-3 border-2 border-gray-300 bg-white text-gray-700 rounded-xl font-medium
-                        hover:border-blue-500 hover:text-blue-600 transition-all duration-300 flex items-center justify-center gap-2 group">
+                  className="w-full md:w-auto px-6 sm:px-8 py-2 sm:py-3 border-2 border-gray-300 bg-white text-gray-700 rounded-xl font-medium
+                        hover:border-blue-500 hover:text-blue-600 transition-all duration-300 flex items-center justify-center gap-2 group
+                        text-sm sm:text-base">
                   View Service Comparison
-                  <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
+                  <ArrowRight className="w-4 sm:w-5 h-4 sm:h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
                 </button>
               </div>
             </div>
           </div>
 
-          {/* Call-to-Action */}
-          <div className="mt-16 text-center reveal">
+          {/* Call-to-Action - Mobile Responsive */}
+          <div className="mt-12 sm:mt-16 text-center reveal mx-2 sm:mx-0">
             <button 
               onClick={handleCTAClick}
-              className="px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl font-semibold 
+              className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl font-semibold 
                       hover:from-green-600 hover:to-green-700 transition-all duration-300 
-                      shadow-lg hover:shadow-green-500/20 transform hover:-translate-y-1"
+                      shadow-lg hover:shadow-green-500/20 transform hover:-translate-y-1
+                      text-sm sm:text-base"
             >
               Get Your Custom Website
             </button>
@@ -456,17 +542,17 @@ const WebDevelopment: React.FC = () => {
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-orange-100 rounded-full opacity-20 blur-2xl will-change-transform"></div>
         
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 reveal">
-            <span className="inline-block px-4 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium mb-4">OUR EXPERTISE</span>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">
+          <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-12 reveal px-2 sm:px-0">
+            <span className="inline-block px-3 sm:px-4 py-1 bg-blue-100 text-blue-600 rounded-full text-xs sm:text-sm font-medium mb-3 sm:mb-4">OUR EXPERTISE</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-gray-900">
               <span className="text-blue-600">Web Development</span> Solutions
             </h2>
-            <p className="text-base sm:text-lg text-gray-600 mb-8">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-6 sm:mb-8">
               Tailored solutions for every business need, from simple websites to complex web applications.
             </p>
           </div>
           
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+          <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 px-2 sm:px-0">
             {[
               {
                 icon: <Database className="w-5 h-5" />,
@@ -541,17 +627,17 @@ const WebDevelopment: React.FC = () => {
                   key={index}
                   className="reveal bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 flex flex-col h-full"
                 >
-                  <div className="p-4 flex-1 flex flex-col">
-                    <div className="flex items-start gap-3 mb-3">
-                      <div className={`w-9 h-9 rounded-lg flex items-center justify-center ${colorMap[service.color as keyof typeof colorMap].split(' ')[0]}`}>
+                  <div className="p-4 sm:p-5 flex-1 flex flex-col">
+                    <div className="flex items-start gap-2 sm:gap-3 mb-2 sm:mb-3">
+                      <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center ${colorMap[service.color as keyof typeof colorMap].split(' ')[0]}`}>
                         <div className={colorMap[service.color as keyof typeof colorMap].split(' ')[1]}>
                           {service.icon}
                         </div>
                       </div>
-                      <h3 className="text-sm font-bold text-gray-800">{service.title}</h3>
+                      <h3 className="text-sm sm:text-base font-bold text-gray-800">{service.title}</h3>
                     </div>
-                    <p className="text-xs text-gray-600 mb-2">{service.desc}</p>
-                    <p className={`text-xs font-medium mt-auto ${colorMap[service.color as keyof typeof colorMap].split(' ')[1]}`}>
+                    <p className="text-xs sm:text-sm text-gray-600 mb-2">{service.desc}</p>
+                    <p className={`text-xs sm:text-sm font-medium mt-auto ${colorMap[service.color as keyof typeof colorMap].split(' ')[1]}`}>
                       {service.tagline}
                     </p>
                   </div>
