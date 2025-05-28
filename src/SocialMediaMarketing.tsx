@@ -68,7 +68,8 @@ const SocialMediaMarketing = () => {
 
   // Handle CTA button click
   const handleCTAClick = () => {
-    window.location.href = '/contact';
+    // Navigate to homepage with query parameter to open consultation form
+    window.location.href = '/?openConsultation=true';
   };
 
   return (
@@ -113,7 +114,7 @@ const SocialMediaMarketing = () => {
                   <Star className="w-3 h-3 fill-current" />
                   <Star className="w-3 h-3 fill-current" />
                 </div>
-                <span className="font-bold">Rated #1 Social Media Agency in Kenya</span>
+                <span className="font-bold">Aztech Intelligence | Social Media Excellence</span>
               </div>
               
               <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-6">
@@ -700,7 +701,7 @@ const SocialMediaMarketing = () => {
       </section>
       
       {/* Use Cases Section */}
-      <section className="py-20 bg-gradient-to-b from-white to-purple-50" id="use-cases">
+      <section className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-fuchsia-50 py-12 sm:py-16 md:py-20 overflow-hidden relative">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-purple-100 text-purple-600 text-sm font-medium mb-6">

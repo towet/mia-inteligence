@@ -2,6 +2,21 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Filter, ArrowRight, ExternalLink, Bookmark, Star, Calendar, Trophy, Code, Users, LayoutGrid, CheckCircle, X } from 'lucide-react';
 
+// Import project images from assets folder
+import smartGadgetsImg from '../assets/smartgadgets.png';
+import nestlyImg from '../assets/Nestify.png';
+import bomaBoraImg from '../assets/bomabora.png';
+import fleetManagementImg from '../assets/fleetmanagement.png';
+import orionSafarisImg from '../assets/orionsafariss.png';
+import languageLearningImg from '../assets/languagelearning.png';
+import budgetManagementImg from '../assets/budgetmanagement.png';
+import mealPlannerImg from '../assets/meal-planner.png';
+import kabarakMaintenanceImg from '../assets/kabarak maintainance sports .png';
+import payrollImg from '../assets/payroll.png';
+import resourceAllocationImg from '../assets/resourceallocation.png';
+import lostAndFoundImg from '../assets/lostandfound.png';
+import willingnessOfMindImg from '../assets/willingness of the mind.png';
+
 // Define project categories with icons
 const categories = [
   { id: 'all', name: 'All Projects', icon: LayoutGrid },
@@ -29,7 +44,7 @@ const projects = [
     category: 'tech-ai',
     description: 'An intelligent virtual assistant platform for consumer electronics customer support, product information, and troubleshooting.',
     tags: ['AI/ML', 'React', 'TypeScript', 'Supabase', 'Tailwind CSS'],
-    image: 'https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+    image: smartGadgetsImg,
     stats: {
       satisfaction: '98%',
       responseTime: '< 2s',
@@ -43,7 +58,7 @@ const projects = [
     category: 'real-estate',
     description: 'A comprehensive real estate platform streamlining property search, listing, and management for both residential and commercial properties.',
     tags: ['Angular', 'TypeScript', 'Firebase', 'Bootstrap', 'Material UI'],
-    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=773&q=80',
+    image: nestlyImg,
     stats: {
       properties: '5,000+',
       users: '25k+',
@@ -57,7 +72,7 @@ const projects = [
     category: 'agriculture',
     description: 'A comprehensive agricultural management platform connecting farmers with collection agents and streamlining the dairy supply chain.',
     tags: ['React', 'TypeScript', 'Supabase', 'Tailwind CSS'],
-    image: 'https://images.unsplash.com/photo-1631233859262-0d7b12ea7d4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+    image: bomaBoraImg,
     stats: {
       farmers: '1,200+',
       efficiency: '+35%',
@@ -71,7 +86,7 @@ const projects = [
     category: 'business',
     description: 'A comprehensive fleet management solution for tracking, maintenance, and optimization of vehicle operations.',
     tags: ['React', 'Node.js', 'Firebase', 'Google Maps'],
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+    image: fleetManagementImg,
     stats: {
       vehicles: '500+',
       fuelSavings: '22%',
@@ -85,7 +100,7 @@ const projects = [
     category: 'travel',
     description: 'A modern booking platform for safari experiences with real-time availability, itinerary planning and customer management.',
     tags: ['React', 'Node.js', 'Supabase', 'Tailwind CSS'],
-    image: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=768&q=80',
+    image: orionSafarisImg,
     stats: {
       bookings: '200+ monthly',
       destinations: '25+',
@@ -99,7 +114,7 @@ const projects = [
     category: 'education',
     description: 'An interactive language learning platform with AI-powered pronunciation feedback and personalized lesson plans.',
     tags: ['React', 'AI/ML', 'Node.js', 'Firebase'],
-    image: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=771&q=80',
+    image: languageLearningImg,
     stats: {
       languages: '12',
       activeUsers: '50k+',
@@ -113,7 +128,7 @@ const projects = [
     category: 'business',
     description: 'A comprehensive budgeting and financial management platform for businesses of all sizes.',
     tags: ['Angular', 'TypeScript', 'Chart.js', 'Material UI'],
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=772&q=80',
+    image: budgetManagementImg,
     stats: {
       accuracy: '99.9%',
       timeSaved: '15+ hrs/month',
@@ -127,7 +142,7 @@ const projects = [
     category: 'agriculture',
     description: 'An intelligent chatbot that creates personalized meal plans and recipes based on dietary preferences and restrictions.',
     tags: ['React', 'AI/ML', 'Node.js', 'Tailwind CSS'],
-    image: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=770&q=80',
+    image: mealPlannerImg,
     stats: {
       recipes: '10k+',
       diets: '15+ types',
@@ -141,7 +156,7 @@ const projects = [
     category: 'sustainability',
     description: 'A sustainability platform for tracking, reporting, and improving environmental impacts for businesses and organizations.',
     tags: ['React', 'Node.js', 'Chart.js', 'Tailwind CSS'],
-    image: 'https://images.unsplash.com/photo-1498271741441-a10a6f528ae2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=771&q=80',
+    image: willingnessOfMindImg,
     stats: {
       carbonReduction: '45k tons',
       organizations: '120+',
@@ -155,7 +170,7 @@ const projects = [
     category: 'education',
     description: 'A facility maintenance management system for educational institutions to track, schedule, and optimize maintenance operations.',
     tags: ['React', 'Firebase', 'Material UI'],
-    image: 'https://images.unsplash.com/photo-1581447109200-bf2769116351?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+    image: kabarakMaintenanceImg,
     stats: {
       facilities: '50+',
       responseTime: '-40%',
@@ -169,7 +184,7 @@ const projects = [
     category: 'business',
     description: 'A comprehensive payroll processing solution with automated tax calculations, compliance, and employee self-service.',
     tags: ['Angular', 'Node.js', 'Material UI'],
-    image: 'https://images.unsplash.com/photo-1622675363311-3e1904dc1885?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+    image: payrollImg,
     stats: {
       employees: '10k+',
       accuracy: '99.99%',
@@ -183,7 +198,7 @@ const projects = [
     category: 'business',
     description: 'An intelligent resource allocation and project management platform for optimizing team performance and project outcomes.',
     tags: ['React', 'TypeScript', 'Chart.js', 'Tailwind CSS'],
-    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+    image: resourceAllocationImg,
     stats: {
       productivity: '+30%',
       projects: '500+ managed',
@@ -197,7 +212,7 @@ const projects = [
     category: 'business',
     description: 'A digital lost and found solution for businesses, venues, and public spaces to manage, track, and return lost items efficiently.',
     tags: ['React', 'Firebase', 'Tailwind CSS'],
-    image: 'https://images.unsplash.com/photo-1584824486516-0555a07fc511?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+    image: lostAndFoundImg,
     stats: {
       itemsReturned: '80%',
       processingTime: '-60%',

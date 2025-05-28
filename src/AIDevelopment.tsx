@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  Menu, Database, Bot, Brain, BarChart2, MessageSquare, ArrowRight
+  Menu, Database, Bot, Brain, BarChart2, MessageSquare, ArrowRight, Eye
 } from 'lucide-react';
 
 // Helper functions for styling based on color
@@ -113,13 +113,10 @@ const AIDevelopment: React.FC = () => {
     };
   }, []);
 
-  // Handler for CTA buttons
+  // Handler for CTA buttons - opens consultation form
   const handleCTAClick = () => {
-    // Scroll to contact form or open contact modal
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    // Navigate to homepage with query parameter to open consultation form
+    window.location.href = '/?openConsultation=true';
   };
 
   // Navigation state
@@ -144,7 +141,7 @@ const AIDevelopment: React.FC = () => {
               <div className="w-8 h-8 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center">
                 <Brain className="w-5 h-5 text-white" />
               </div>
-              <div className="font-bold text-lg text-gray-900">Global Expert<span className="text-orange-600">.</span></div>
+              <div className="font-bold text-lg text-gray-900">Aztech Intelligence<span className="text-orange-600">.</span></div>
             </Link>
 
             {/* Mobile Menu Button */}
@@ -170,7 +167,7 @@ const AIDevelopment: React.FC = () => {
       </nav>
       
       {/* Hero Section with Parallax Effect */}
-      <section className="relative pt-24 pb-20 mt-16 overflow-hidden bg-gradient-to-br from-blue-50 via-white to-orange-50">
+      <section className="relative pt-12 sm:pt-20 md:pt-28 pb-12 sm:pb-16 md:pb-20 overflow-hidden bg-gradient-to-br from-violet-50 via-white to-amber-50">
         {/* Decorative elements */}
         <div 
           className="absolute top-0 right-0 w-1/3 h-1/3 bg-orange-500/5 rounded-bl-full" 
@@ -336,7 +333,7 @@ const AIDevelopment: React.FC = () => {
                               { icon: <MessageSquare className="w-full h-full" />, delay: '1s', color: 'bg-orange-500' },
                               { icon: <Bot className="w-full h-full" />, delay: '2s', color: 'bg-blue-500' },
                               { icon: <BarChart2 className="w-full h-full" />, delay: '3s', color: 'bg-orange-500' },
-                              { icon: <Image className="w-full h-full" />, delay: '4s', color: 'bg-blue-500' },
+                              { icon: <MessageSquare className="w-full h-full" />, delay: '4s', color: 'bg-blue-500' },
                             ].map((item, index) => {
                               const angle = (index / 5) * Math.PI * 2;
                               const x = Math.cos(angle) * 45 + 50;
@@ -805,7 +802,7 @@ const AIDevelopment: React.FC = () => {
                 subtitle: "Visual Intelligence",
                 description: "Detects and classifies images, scans barcodes, verifies documents, or tracks objects in video feeds.",
                 useCase: "Retail (inventory), agriculture (crop analysis), security (facial recognition), health (X-ray diagnostics)",
-                icon: <Image className="w-8 h-8" />,
+                icon: <Eye className="w-8 h-8" />,
                 color: "fuchsia",
                 
                 features: ["Object detection", "Facial recognition", "Document scanning", "Quality control"]
@@ -965,7 +962,7 @@ const AIDevelopment: React.FC = () => {
                   {
                     title: "Analytics Dashboard",
                     description: "Comprehensive analytics and reporting to track performance and optimize your AI systems.",
-                    icon: <Image className="w-6 h-6" />,
+                    icon: <BarChart2 className="w-6 h-6" />,
                     color: "orange"
                   }
                 ].map((feature, index) => (
@@ -1045,7 +1042,7 @@ const AIDevelopment: React.FC = () => {
                   <div className="w-32 h-32 rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-br from-violet-200 to-fuchsia-200 opacity-40 blur-lg animate-pulse-slow"></div>
                   <div className="w-32 h-32 rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 translate-x-3 translate-y-3 bg-gradient-to-br from-amber-200 to-orange-200 opacity-40 blur-lg animate-pulse-slow delay-700"></div>
                   <div className="w-24 h-24 rounded-xl bg-white shadow-lg flex items-center justify-center relative z-10 rotate-12 hover-card-rise">
-                    <Image className="w-14 h-14 text-fuchsia-600" />
+                    <Eye className="w-14 h-14 text-fuchsia-600" />
                   </div>
                 </div>
               </div>

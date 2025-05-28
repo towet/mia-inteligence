@@ -8,13 +8,10 @@ import {
 } from 'lucide-react';
 
 const WebDevelopment: React.FC = () => {
-  // Function to handle CTA button clicks
+  // Function to handle CTA button clicks to open consultation form
   const handleCTAClick = () => {
-    // Scroll to contact form or open contact modal
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    // Navigate to homepage with query parameter to open consultation form
+    window.location.href = '/?openConsultation=true';
   };
   // Intersection Observer for animations
   useEffect(() => {
@@ -78,7 +75,7 @@ const WebDevelopment: React.FC = () => {
               <div className="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center">
                 <Code className="w-5 h-5 text-white" />
               </div>
-              <div className="font-bold text-lg text-gray-900">Global Expert<span className="text-orange-500">.</span></div>
+              <div className="font-bold text-lg text-gray-900">Aztech Intelligence<span className="text-violet-600">.</span></div>
             </Link>
 
             {/* Mobile Menu Button */}
@@ -104,7 +101,7 @@ const WebDevelopment: React.FC = () => {
       </nav>
       
       {/* Hero Section with Parallax Effect */}
-      <section className="relative pt-24 pb-20 mt-16 overflow-hidden bg-gradient-to-br from-blue-50 via-white to-orange-50">
+      <section className="py-8 sm:py-20 md:py-24 relative overflow-hidden bg-gray-50 hero-section">
         {/* Decorative elements */}
         <div 
           className="absolute top-0 right-0 w-1/3 h-1/3 bg-orange-500/5 rounded-bl-full" 

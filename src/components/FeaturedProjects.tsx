@@ -2,6 +2,17 @@ import React, { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ExternalLink, Star, Code, Users, Shield, BarChart2, CheckCircle, ChevronRight, Trophy } from 'lucide-react';
 
+// Import project images from assets folder
+import smartGadgetsImg from '../../assets/smartgadgets.png';
+import nestlyImg from '../../assets/Nestify.png';
+import bomaBoraImg from '../../assets/bomabora.png';
+import fleetManagementImg from '../../assets/fleetmanagement.png';
+import orionSafarisImg from '../../assets/orionsafariss.png';
+import languageLearningImg from '../../assets/languagelearning.png';
+import mealPlannerImg from '../../assets/meal-planner.png';
+import willingnessOfMindImg from '../../assets/willingness of the mind.png';
+import payrollImg from '../../assets/payroll.png';
+
 // Import the project data from Portfolio component to maintain consistency
 // This would typically be imported from a shared data source
 const featuredProjects = [
@@ -11,11 +22,12 @@ const featuredProjects = [
     category: 'tech-ai',
     description: 'An intelligent virtual assistant platform for consumer electronics customer support, product information, and troubleshooting.',
     tags: ['AI/ML', 'React', 'TypeScript'],
-    image: 'https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+    image: smartGadgetsImg,
     stats: {
       satisfaction: '98%',
       responseTime: '< 2s'
-    }
+    },
+    livePreviewUrl: 'https://smartgadgets-ai.netlify.app/'
   },
   {
     id: 'nestly-real-estate',
@@ -23,11 +35,12 @@ const featuredProjects = [
     category: 'real-estate',
     description: 'A comprehensive real estate platform streamlining property search, listing, and management for both residential and commercial properties.',
     tags: ['Angular', 'TypeScript', 'Firebase'],
-    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=773&q=80',
+    image: nestlyImg,
     stats: {
       properties: '5,000+',
       users: '25k+'
-    }
+    },
+    livePreviewUrl: 'https://smartgadgets-ai.netlify.app/'
   },
   {
     id: 'boma-bora',
@@ -35,11 +48,51 @@ const featuredProjects = [
     category: 'agriculture',
     description: 'A comprehensive agricultural management platform connecting farmers with collection agents and streamlining the dairy supply chain.',
     tags: ['React', 'TypeScript', 'Supabase'],
-    image: 'https://images.unsplash.com/photo-1631233859262-0d7b12ea7d4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+    image: bomaBoraImg,
     stats: {
       farmers: '1,200+',
       efficiency: '+35%'
-    }
+    },
+    livePreviewUrl: 'https://smartgadgets-ai.netlify.app/'
+  },
+  {
+    id: 'fleet-management',
+    title: 'Fleet Management System',
+    category: 'business',
+    description: 'A comprehensive fleet management solution for tracking, maintenance, and optimization of vehicle operations.',
+    tags: ['React', 'Node.js', 'Firebase'],
+    image: fleetManagementImg,
+    stats: {
+      vehicles: '500+',
+      fuelSavings: '22%'
+    },
+    livePreviewUrl: 'https://deezayecofuel.com/'
+  },
+  {
+    id: 'language-learning',
+    title: 'Language Learning Platform',
+    category: 'education',
+    description: 'An interactive language learning platform with AI-powered pronunciation feedback and personalized lesson plans.',
+    tags: ['React', 'AI/ML', 'Node.js'],
+    image: languageLearningImg,
+    stats: {
+      languages: '12',
+      activeUsers: '50k+'
+    },
+    livePreviewUrl: 'https://multilanguagetutor.netlify.app/'
+  },
+  {
+    id: 'orion-safaris',
+    title: 'Orion Safaris Booking Platform',
+    category: 'travel',
+    description: 'A modern booking platform for safari experiences with real-time availability, itinerary planning and customer management.',
+    tags: ['React', 'Node.js', 'Supabase'],
+    image: orionSafarisImg,
+    stats: {
+      bookings: '200+ monthly',
+      satisfaction: '4.9/5'
+    },
+    livePreviewUrl: 'https://orionsafaris.info/'
   }
 ];
 
@@ -51,7 +104,7 @@ const scrollingProjects = [
     category: 'business',
     description: 'A comprehensive fleet management solution for tracking, maintenance, and optimization of vehicle operations.',
     tags: ['React', 'Node.js', 'Firebase'],
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+    image: fleetManagementImg,
   },
   {
     id: 'language-learning',
@@ -59,7 +112,7 @@ const scrollingProjects = [
     category: 'education',
     description: 'An interactive language learning platform with AI-powered pronunciation feedback and personalized lesson plans.',
     tags: ['React', 'AI/ML', 'Node.js'],
-    image: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=771&q=80',
+    image: languageLearningImg,
   },
   {
     id: 'neo-green',
@@ -67,7 +120,7 @@ const scrollingProjects = [
     category: 'sustainability',
     description: 'A sustainability platform for tracking, reporting, and improving environmental impacts for businesses and organizations.',
     tags: ['React', 'Node.js', 'Chart.js'],
-    image: 'https://images.unsplash.com/photo-1498271741441-a10a6f528ae2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=771&q=80',
+    image: willingnessOfMindImg,
   },
   {
     id: 'meal-planner',
@@ -75,7 +128,7 @@ const scrollingProjects = [
     category: 'agriculture',
     description: 'An intelligent chatbot that creates personalized meal plans and recipes based on dietary preferences and restrictions.',
     tags: ['React', 'AI/ML', 'Node.js'],
-    image: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=770&q=80',
+    image: mealPlannerImg,
   },
   {
     id: 'orion-safaris',
@@ -83,7 +136,7 @@ const scrollingProjects = [
     category: 'travel',
     description: 'A modern booking platform for safari experiences with real-time availability, itinerary planning and customer management.',
     tags: ['React', 'Node.js', 'Supabase'],
-    image: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=768&q=80',
+    image: orionSafarisImg,
   },
   {
     id: 'payroll-processing',
@@ -91,7 +144,7 @@ const scrollingProjects = [
     category: 'business',
     description: 'A comprehensive payroll processing solution with automated tax calculations, compliance, and employee self-service.',
     tags: ['Angular', 'Node.js', 'Material UI'],
-    image: 'https://images.unsplash.com/photo-1622675363311-3e1904dc1885?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+    image: payrollImg,
   },
   {
     id: 'healthcare-platform',
@@ -166,28 +219,38 @@ const FeaturedProjects: React.FC = () => {
 
   // Card-by-card scrolling effect, especially for mobile
   useEffect(() => {
-    if (hovering) return;
+    if (!scrollContainerRef.current || hovering || !isInView) return;
     
-    // Special card-by-card scrolling for mobile
-    const isMobile = window.innerWidth < 768;
-    const cardScrollSpeed = AUTO_SCROLL_SPEED; // Control scrolling speed
+    // Determine if we're on mobile
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
     
+    // Set up auto-scrolling interval
     const scrollInterval = setInterval(() => {
-      if (scrollContainerRef.current && !isScrolling) {
-        const numCards = scrollingProjects.length;
-        
+      if (scrollContainerRef.current) {
         if (isMobile) {
-          // Mobile card-by-card behavior
-          const cardWidth = 250; // Width of a card on mobile
-          const nextIndex = (activeCardIndex + 1) % numCards;
+          // Mobile - centered card scrolling
+          const nextIndex = (activeCardIndex + 1) % scrollingProjects.length;
           
-          // Smoothly scroll to the next card
-          scrollContainerRef.current.scrollTo({
-            left: nextIndex * (cardWidth + 32), // Card width + gap
-            behavior: 'smooth'
-          });
+          // Get all cards
+          const cards = Array.from(scrollContainerRef.current.querySelectorAll('.scroll-card'));
           
-          // Update active card index
+          // If we have cards, scroll to the next one in a centered way
+          if (cards.length > 0 && cards[nextIndex]) {
+            const cardElement = cards[nextIndex] as HTMLElement;
+            const containerWidth = scrollContainerRef.current.clientWidth;
+            const cardWidth = cardElement.offsetWidth;
+            
+            // Calculate position to center the card
+            const scrollPosition = cardElement.offsetLeft - (containerWidth / 2) + (cardWidth / 2);
+            
+            // Scroll to that position
+            scrollContainerRef.current.scrollTo({
+              left: scrollPosition,
+              behavior: 'smooth'
+            });
+          }
+          
+          // Update the active card index
           setActiveCardIndex(nextIndex);
         } else {
           // Desktop continuous scrolling behavior
@@ -202,13 +265,13 @@ const FeaturedProjects: React.FC = () => {
           } else {
             // Otherwise scroll a bit more
             scrollContainerRef.current.scrollBy({
-              left: cardScrollSpeed,
+              left: AUTO_SCROLL_SPEED,
               behavior: 'auto'
             });
           }
         }
       }
-    }, isMobile ? MOBILE_CARD_INTERVAL : 16); // Longer interval for mobile card-by-card scrolling
+    }, isMobile ? MOBILE_CARD_INTERVAL : 16);
     
     return () => clearInterval(scrollInterval);
   }, [activeCardIndex, hovering, isScrolling]);
@@ -396,12 +459,10 @@ const FeaturedProjects: React.FC = () => {
                     
                     <Link 
                       to={`/portfolio/${project.id}`} 
-                      className="hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300"
+                      className="inline-flex items-center gap-1.5 text-xs font-medium bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-3 py-1.5 rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
                     >
-                      <div className="flex items-center gap-1 text-xs font-medium text-blue-600">
-                        <span>Details</span>
-                        <ChevronRight className="w-3 h-3" />
-                      </div>
+                      <span>View Project</span>
+                      <ChevronRight className="w-3 h-3" />
                     </Link>
                   </div>
                 </div>
@@ -438,12 +499,12 @@ const FeaturedProjects: React.FC = () => {
             {/* Scrolling container */}
             <div 
               ref={scrollContainerRef}
-              className="flex overflow-x-auto scrollbar-hide pb-8 pt-2" // Removed px-2
+              className="flex overflow-x-auto scrollbar-hide pb-8 pt-2 px-4" // Added px-4 for better mobile padding
               onScroll={handleScroll}
               onMouseEnter={() => setHovering(true)}
               onMouseLeave={() => setHovering(false)}
             >
-              <div className="flex gap-8 min-w-max px-2"> {/* Added px-2 here to compensate */} 
+              <div className="flex gap-6 sm:gap-8 min-w-max px-4"> {/* Reduced gap for mobile */} 
                 {scrollingProjects.map((project, index) => {
                   // Determine card visibility based on active card index (for mobile)
                   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
@@ -453,7 +514,7 @@ const FeaturedProjects: React.FC = () => {
                   return (
                     <div 
                       key={project.id}
-                      className="group w-[250px] sm:w-[280px] flex-shrink-0 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-1000 border border-transparent hover:border-blue-200"
+                      className="group scroll-card w-[75vw] max-w-[230px] sm:w-[350px] flex-shrink-0 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-1000 border border-transparent hover:border-blue-200"
                       style={{ 
                         opacity: !isInView ? 0 : 
                                 isMobile && !isActive && !isLeaving ? 0 : 

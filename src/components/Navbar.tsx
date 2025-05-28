@@ -131,15 +131,7 @@ const Navbar: React.FC = () => {
             </Link>
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <Link 
-              to="/#contact" 
-              className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors shadow-sm hover:shadow-md"
-            >
-              Get Started
-            </Link>
-          </div>
+          {/* No CTA Button */}
 
           {/* Mobile menu button */}
           <button 
@@ -196,15 +188,7 @@ const Navbar: React.FC = () => {
             About
           </Link>
           
-          {/* Mobile CTA */}
-          <div className="pt-2">
-            <Link 
-              to="/#contact" 
-              className="block w-full px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-center font-medium transition-colors shadow-sm"
-            >
-              Get Started
-            </Link>
-          </div>
+          {/* No Mobile CTA */}
         </div>
       </div>
     </nav>

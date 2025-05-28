@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import {
   Globe2,
@@ -33,7 +33,8 @@ import {
   ArrowDown,
   Clock
 } from 'lucide-react';
-import heroImage from './assets/hero.png';
+// Use hero image from assets folder
+import heroImage from '../assets/reti.png';
 import WebDevelopment from './WebDevelopment';
 import AIDevelopment from './AIDevelopment';
 import CustomAIAgents from './CustomAIAgents';
@@ -48,11 +49,29 @@ import ProjectDetail from './ProjectDetail';
 import ScrollToTop from './ScrollToTop';
 import FeaturedProjects from './components/FeaturedProjects';
 import Navbar from './components/Navbar';
+import ContactFloat from './components/ContactFloat';
+import ConsultationForm from './components/ConsultationForm';
+
+// Create a context to share the consultation form toggle function
+export const ConsultationContext = createContext<{
+  openConsultationForm: () => void;
+}>({ openConsultationForm: () => {} });
 
 // Main App component that contains the home page content
 const Home = () => {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [showContact, setShowContact] = useState(false);
+  const [showConsultation, setShowConsultation] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+  
+  // Function to open consultation form - will be shared via context
+  const openConsultationForm = () => {
+    setShowConsultation(true);
+  };
 
   const handleContactClick = () => {
     setIsContactOpen(true);
@@ -63,7 +82,7 @@ const Home = () => {
   };
 
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/254755295635', '_blank');
+    window.open('https://wa.me/254795704273', '_blank');
   };
 
   const handleEmailClick = () => {
@@ -71,7 +90,7 @@ const Home = () => {
   };
 
   const handleWhatsApp = () => {
-    window.open('https://wa.me/254755295635', '_blank');
+    window.open('https://wa.me/254795704273', '_blank');
   };
 
   const handleEmail = () => {
@@ -100,7 +119,7 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-white text-gray-800">
       {/* Hero Section */}
-      <header className="pt-20 sm:pt-24 md:pt-28 pb-16 sm:pb-20 md:pb-24 bg-white relative overflow-hidden">
+      <header className="pt-12 sm:pt-20 md:pt-28 pb-12 sm:pb-16 md:pb-24 bg-white relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-transparent"></div>
         </div>
@@ -112,13 +131,12 @@ const Home = () => {
                   <div className="w-4 sm:w-5 h-4 sm:h-5 rounded-full bg-blue-500 text-white flex items-center justify-center text-[10px] sm:text-xs"><Shield className="w-2 sm:w-3 h-2 sm:h-3" /></div>
                   <div className="w-4 sm:w-5 h-4 sm:h-5 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px] sm:text-xs"><Globe2 className="w-2 sm:w-3 h-2 sm:h-3" /></div>
                 </div>
-                <span className="text-xs sm:text-sm">Kenya's Premier Digital Agency • Est. 2024</span>
+                <span className="text-xs sm:text-sm">Kenya's Premier Tech Agency • Est. 2024</span>
               </div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
                 Skyrocket Your<br className="md:hidden"/> Business <br className="hidden md:block lg:hidden"/>With
-                <div className="relative mt-1 sm:mt-2">
+                <div className="mt-1 sm:mt-2">
                   <span className="block bg-gradient-to-r from-blue-600 via-gray-700 to-blue-600 text-transparent bg-clip-text">Proven Digital Solutions</span>
-                  <div className="absolute -bottom-1 sm:-bottom-2 left-0 h-0.5 sm:h-1 w-full bg-gradient-to-r from-blue-600 via-gray-700 to-blue-600 rounded-full transform scale-x-0 transition-transform duration-1000 animate-scale-x-full"></div>
                 </div>
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-gray-600 mx-auto lg:mx-0 max-w-md lg:max-w-none">
@@ -151,9 +169,9 @@ const Home = () => {
               
               <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4 justify-start">
                 <button
-                  onClick={() => setShowContact(true)}
-                  className="px-6 sm:px-8 py-3 sm:py-4 bg-orange-500 text-white rounded-lg sm:rounded-xl font-semibold hover:bg-orange-600 
-                           transition-all duration-300 flex items-center gap-2 group w-full sm:w-auto text-sm sm:text-base"
+                  onClick={() => setShowConsultation(true)}
+                  className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-600 text-white rounded-lg sm:rounded-xl font-semibold hover:shadow-lg hover:scale-105 
+                            transition-all duration-300 flex items-center gap-2 group w-full sm:w-auto text-sm sm:text-base"
                 >
                   Get Free Consultation
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
@@ -165,12 +183,18 @@ const Home = () => {
               </div>
               
               {/* Client logos */}
-              <div className="pt-4 sm:pt-6">
-                <p className="text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">TRUSTED BY LEADING KENYAN BUSINESSES</p>
-                <div className="flex flex-wrap items-center gap-4 sm:gap-6 justify-start opacity-70 hover:opacity-100 transition-opacity duration-300">
-                  <img src="https://res.cloudinary.com/dtbzsezyo/image/upload/v1720016992/client-logo-1_lqohes.png" alt="Client 1" className="h-6 sm:h-8 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
-                  <img src="https://res.cloudinary.com/dtbzsezyo/image/upload/v1720016992/client-logo-2_bwgibr.png" alt="Client 2" className="h-6 sm:h-8 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
-                  <img src="https://res.cloudinary.com/dtbzsezyo/image/upload/v1720016992/client-logo-3_vdnajq.png" alt="Client 3" className="h-6 sm:h-8 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+              <div className="pt-6 sm:pt-8 mt-2 sm:mt-4">
+                <p className="text-sm sm:text-base text-gray-700 mb-3 sm:mb-4 font-semibold tracking-wide">TRUSTED BY TOP BUSINESSES</p>
+                <div className="flex flex-wrap items-center gap-5 sm:gap-8 justify-start">
+                  <a href="https://orionsafaris.info/" target="_blank" rel="noopener noreferrer" className="flex items-center bg-white p-3 sm:p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-blue-100 transform hover:-translate-y-1">
+                    <img src="https://orionsafaris.info/assets/logo-CQGcTeM6.png" alt="Orion Safaris" className="h-12 sm:h-16 md:h-20 w-auto object-contain transition-all duration-300" />
+                  </a>
+                  <a href="https://deezayecofuel.com/" target="_blank" rel="noopener noreferrer" className="flex items-center bg-white p-3 sm:p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-blue-100 transform hover:-translate-y-1">
+                    <img src="https://deezayecofuel.com/assets/Defts%20Final%20Logo'%20PNG-01-CeyamN1k.png" alt="Defts Ecofuel" className="h-12 sm:h-16 md:h-20 w-auto object-contain transition-all duration-300" />
+                  </a>
+                  <a href="https://nestl.netlify.app/" target="_blank" rel="noopener noreferrer" className="flex items-center bg-white p-3 sm:p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-blue-100 transform hover:-translate-y-1">
+                    <img src="https://nestl.netlify.app/assets/logo.png" alt="Nestify Real Estate" className="h-12 sm:h-16 md:h-20 w-auto object-contain transition-all duration-300" />
+                  </a>
                 </div>
               </div>
             </div>
@@ -184,17 +208,17 @@ const Home = () => {
                 
                 {/* Floating stats */}
                 <div className="absolute top-2 sm:top-4 right-2 sm:right-4 bg-white/90 backdrop-blur-sm p-2 sm:p-3 rounded-md sm:rounded-lg shadow-lg sm:shadow-xl animate-float-slow">
-                  <div className="text-orange-500 font-bold text-base sm:text-xl">+127%</div>
+                  <div className="text-blue-600 font-bold text-base sm:text-xl">+127%</div>
                   <div className="text-gray-700 text-[10px] sm:text-xs">Avg. ROI</div>
                 </div>
                 
                 <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 bg-white/90 backdrop-blur-sm p-2 sm:p-3 rounded-md sm:rounded-lg shadow-lg sm:shadow-xl animate-float">
-                  <div className="text-orange-500 font-bold text-base sm:text-xl">30 Days</div>
+                  <div className="text-blue-600 font-bold text-base sm:text-xl">30 Days</div>
                   <div className="text-gray-700 text-[10px] sm:text-xs">Results Guarantee</div>
                 </div>
               </div>
-              <div className="absolute -top-4 sm:-top-6 -right-4 sm:-right-6 w-16 sm:w-24 h-16 sm:h-24 bg-orange-500/10 rounded-full hidden sm:block"></div>
-              <div className="absolute -bottom-4 sm:-bottom-6 -left-4 sm:-left-6 w-20 sm:w-32 h-20 sm:h-32 bg-orange-500/10 rounded-full hidden sm:block"></div>
+              <div className="absolute -top-4 sm:-top-6 -right-4 sm:-right-6 w-16 sm:w-24 h-16 sm:h-24 bg-blue-600/10 rounded-full hidden sm:block"></div>
+              <div className="absolute -bottom-4 sm:-bottom-6 -left-4 sm:-left-6 w-20 sm:w-32 h-20 sm:h-32 bg-blue-600/10 rounded-full hidden sm:block"></div>
             </div>
           </div>
         </div>
@@ -204,7 +228,7 @@ const Home = () => {
       <nav className="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50 top-0">
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between h-20">
-            <div className="text-2xl font-bold text-blue-600 fade-scale">Global Digital Experts</div>
+            <div className="text-2xl font-bold text-blue-600 fade-scale">Aztech Intelligence</div>
             <div className="hidden md:flex items-center space-x-8">
               <Link to="/" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 reveal stagger-1">Home</Link>
               <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 reveal stagger-2">Services</a>
@@ -217,9 +241,30 @@ const Home = () => {
                 Contact Us
               </button>
             </div>
-            <button className="md:hidden text-gray-600 hover:text-orange-500 transition-colors duration-300">
+            <button 
+              onClick={toggleMobileMenu}
+              className="md:hidden text-gray-600 hover:text-blue-600 transition-colors duration-300">
               <Menu className="w-6 h-6" />
             </button>
+          </div>
+          
+          {/* Mobile Menu */}
+          <div className={`md:hidden absolute top-full left-0 right-0 bg-white shadow-md transition-all duration-300 ${mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+            <div className="px-6 py-4 space-y-3">
+              <Link to="/" className="block text-gray-600 hover:text-blue-600 transition-colors duration-300 py-2">Home</Link>
+              <a href="#services" className="block text-gray-600 hover:text-blue-600 transition-colors duration-300 py-2">Services</a>
+              <a href="#about" className="block text-gray-600 hover:text-blue-600 transition-colors duration-300 py-2">About</a>
+              <Link to="/portfolio" className="block text-gray-600 hover:text-blue-600 transition-colors duration-300 py-2">Portfolio</Link>
+              <button 
+                onClick={() => {
+                  setShowContact(true);
+                  setMobileMenuOpen(false);
+                }}
+                className="block w-full text-left text-gray-600 hover:text-blue-600 transition-colors duration-300 py-2"
+              >
+                Contact Us
+              </button>
+            </div>
           </div>
         </div>
       </nav>
@@ -322,6 +367,9 @@ const Home = () => {
         </div>
       )}
 
+      {/* New Consultation Form */}
+      <ConsultationForm isOpen={showConsultation} onClose={() => setShowConsultation(false)} />
+
       {/* About Us Section */}
       <section className="py-24 bg-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-blue-50 rounded-bl-[100px] transform rotate-6"></div>
@@ -330,10 +378,10 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8 reveal">
               <div>
-                <span className="text-blue-600 font-semibold text-lg mb-4 block reveal-from-bottom">Our Journey</span>
-                <h2 className="text-4xl font-bold mb-6 text-gray-900">Driving Digital Innovation Since 2024</h2>
+                <span className="text-blue-600 font-semibold text-lg mb-4 block reveal-from-bottom">Our Mission</span>
+                <h2 className="text-4xl font-bold mb-6 text-gray-900">Empowering Global Success Through Digital Excellence</h2>
                 <p className="text-gray-600 text-lg leading-relaxed">
-                  We've been at the forefront of digital transformation, helping businesses across Kenya embrace the power of technology. Our journey has been marked by innovation, excellence, and a commitment to delivering exceptional results.
+                  We're dedicated to transforming businesses worldwide with cutting-edge digital solutions. Our approach combines innovative technology, strategic thinking, and a relentless pursuit of excellence to deliver exceptional results that drive growth and create lasting value for our clients.
                 </p>
               </div>
               
@@ -352,9 +400,9 @@ const Home = () => {
                     delay: 100
                   },
                   {
-                    title: "Local Expertise",
-                    description: "Deep understanding of the Kenyan market and its digital landscape.",
-                    icon: MapPin,
+                    title: "Global Perspective",
+                    description: "Worldwide expertise with solutions that transcend geographical boundaries.",
+                    icon: Globe2,
                     delay: 200
                   }
                 ].map((feature, index) => (
@@ -733,7 +781,7 @@ const Home = () => {
                 style={{ transitionDelay: '600ms', boxShadow: '0 10px 40px -15px rgba(0, 0, 0, 0.1)' }}>
             <div className="relative h-52 overflow-hidden">
               <img 
-                src="https://res.cloudinary.com/dtbzsezyo/image/upload/v1720010667/academic-research_nclsuy.jpg" 
+                src="https://courses.alsalam.ac.uk/wp-content/uploads/2017/06/Academic-Writing-and-Research-Methodology.jpg" 
                 alt="Research & Academic Writing"
                 className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
               />
@@ -795,7 +843,7 @@ const Home = () => {
               <div className="p-6 relative">
                 <div className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-all duration-300">
-                    Enterprise Security Solutions
+                    Security Solutions
                   </h3>
                   <div className="flex flex-wrap gap-2 my-3">
                     <span className="inline-block px-2 py-1 bg-blue-50 text-blue-600 text-xs rounded-md">Threat Protection</span>
@@ -803,7 +851,7 @@ const Home = () => {
                     <span className="inline-block px-2 py-1 bg-sky-50 text-sky-600 text-xs rounded-md">24/7 Monitoring</span>
                   </div>
                   <p className="text-gray-600 group-hover:text-gray-700 transition-all duration-300">
-                    Comprehensive security solutions to protect your digital assets, prevent breaches, and ensure business continuity with enterprise-grade safeguards.
+                    Comprehensive security solutions to protect your physical and digital assets, prevent breaches, and ensure business continuity with enterprise-grade safeguards.from software to cctv 
                   </p>
                   <Link to="/services/security-services" 
                     className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors duration-300 group/learn mt-2">
@@ -822,7 +870,7 @@ const Home = () => {
                 style={{ transitionDelay: '700ms', boxShadow: '0 10px 40px -15px rgba(0, 0, 0, 0.1)' }}>
             <div className="relative h-52 overflow-hidden">
               <img 
-                src="https://res.cloudinary.com/dtbzsezyo/image/upload/v1720015115/google-meta-ads_jnwcvg.jpg" 
+                src="https://media.licdn.com/dms/image/v2/D4D12AQH-OQBrdvwH5A/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1705468289659?e=2147483647&v=beta&t=bdfrNdJSFQG2-fsVwZPTxrBWr3ycRkgrf2PiRN5OtxA" 
                 alt="Paid Advertising"
                 className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
               />
@@ -832,15 +880,15 @@ const Home = () => {
               </div>
               <div className="absolute bottom-0 left-0 p-4">
                 <div className="inline-block px-2 py-1 bg-gradient-to-r from-red-500 to-blue-500 text-white text-xs font-semibold rounded-md">
-                  🎯 Paid Advertising
+                Google & Meta Advertising
                 </div>
               </div>
             </div>
-            
+           
             <div className="p-6 relative">
               <div className="space-y-4">
                 <h3 className="text-xl font-bold text-gray-900 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-red-600 group-hover:to-blue-600 transition-all duration-300">
-                  Google & Meta Advertising
+                🎯 Paid Advertising
                 </h3>
                 <div className="flex flex-wrap gap-2 my-3">
                   <span className="inline-block px-2 py-1 bg-red-50 text-red-600 text-xs rounded-md">Google Ads</span>
@@ -959,22 +1007,22 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                name: "John Kamau",
-                position: "Small Business Owner, Nairobi",
+                name: "Alex Thompson",
+                position: "E-commerce Director",
                 image: "https://images.unsplash.com/photo-1507152832244-10d45c7eda57?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
-                quote: "Their digital solutions helped my local business reach customers across Kenya. The results were amazing!"
+                quote: "Their web development team transformed our online store completely. The new site loads 3x faster and our conversion rate has increased by 42%. Their attention to detail and responsive design expertise is unmatched."
               },
               {
-                name: "Wanjiku Maina",
-                position: "Digital Creator, Mombasa",
+                name: "Sarah Chen",
+                position: "Innovation Director",
                 image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
-                quote: "They understood my vision and helped me build a strong online presence that resonates with my audience."
+                quote: "The AI solutions they developed for our customer service have revolutionized our business. Our response times decreased by 80% while handling 3x more inquiries. Their expertise in AI implementation is truly world-class."
               },
               {
-                name: "David Ochieng",
-                position: "Startup Founder, Kisumu",
+                name: "Michael Rodriguez",
+                position: "Marketing Executive",
                 image: "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
-                quote: "The team's expertise in digital marketing helped my startup gain visibility across East Africa."
+                quote: "Their digital marketing strategies doubled our ROI within just 3 months. The data-driven approach and constant optimization of our campaigns delivered results beyond our expectations. Truly exceptional service."
               }
             ].map((testimonial, index) => (
               <div 
@@ -1097,9 +1145,9 @@ const Home = () => {
                 
                 <div className="text-center text-white/80 text-sm">
                   <p className="mb-1">Or call us directly at:</p>
-                  <a href="tel:+254755295635" className="text-lg font-bold text-white hover:text-yellow-300 transition-colors flex items-center justify-center gap-2">
+                  <a href="tel:+254795704273" className="text-lg font-bold text-white hover:text-yellow-300 transition-colors flex items-center justify-center gap-2">
                     <Phone className="w-5 h-5" />
-                    +254 755 295 635
+                    +254 795 704 273
                   </a>
                 </div>
                 
@@ -1140,14 +1188,34 @@ const Home = () => {
 
 // Main App component with routing
 function App() {
+  const [showGlobalConsultation, setShowGlobalConsultation] = useState(false);
+  
+  // Check for URL parameter to show consultation form
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('openConsultation') === 'true') {
+      setShowGlobalConsultation(true);
+      // Clean up the URL
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  }, []);
+  
+  // Global function to open consultation form
+  const openGlobalConsultationForm = () => {
+    setShowGlobalConsultation(true);
+  };
+  
   return (
     <Router>
       <ScrollToTop />
-      <div className="min-h-screen flex flex-col">
-        {/* Import Navbar for consistent navigation across all pages */}
-        <Navbar />
-        {/* Add top padding to all routes to accommodate fixed navbar */}
-        <div className="pt-16 sm:pt-18 md:pt-20 flex-grow">
+      <ConsultationContext.Provider value={{ openConsultationForm: openGlobalConsultationForm }}>
+        <div className="min-h-screen flex flex-col">
+          {/* Import Navbar for consistent navigation across all pages */}
+          <Navbar />
+          {/* Add floating contact button */}
+          <ContactFloat />
+          {/* Add top padding to all routes to accommodate fixed navbar */}
+          <div className="pt-10 sm:pt-16 md:pt-20 flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/services/web-development" element={<WebDevelopment />} />
@@ -1163,7 +1231,14 @@ function App() {
             <Route path="/portfolio/:projectId" element={<ProjectDetail />} />
           </Routes>
         </div>
+        
+        {/* Global consultation form */}
+        <ConsultationForm 
+          isOpen={showGlobalConsultation} 
+          onClose={() => setShowGlobalConsultation(false)} 
+        />
       </div>
+      </ConsultationContext.Provider>
     </Router>
   );
 }

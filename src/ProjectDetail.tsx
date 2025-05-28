@@ -12,6 +12,17 @@ import {
   ArrowRight
 } from 'lucide-react';
 
+// Import project images from assets folder
+import smartGadgetsImg from '../assets/smartgadgets.png';
+import nestlyImg from '../assets/Nestify.png';
+import bomaBoraImg from '../assets/bomabora.png';
+import fleetManagementImg from '../assets/fleetmanagement.png';
+import orionSafarisImg from '../assets/orionsafariss.png';
+import languageLearningImg from '../assets/languagelearning.png';
+import mealPlannerImg from '../assets/meal-planner.png';
+import willingnessOfMindImg from '../assets/willingness of the mind.png';
+import payrollImg from '../assets/payroll.png';
+
 // Define Project interface
 interface Project {
   id: string;
@@ -37,6 +48,7 @@ interface Project {
     duration: string;
   };
   related: string[];
+  livePreviewUrl?: string; // Optional URL for live preview
 }
 
 // This would normally come from an API or database
@@ -45,7 +57,7 @@ const projects: Project[] = [
     id: 'smart-gadgets-ai',
     title: 'Smart Gadgets AI Assistant',
     client: 'Consumer Electronics Corporation',
-    clientLogo: 'https://placehold.co/200x80/eef/fff?text=TechCorp',
+    clientLogo: smartGadgetsImg,
     description: 'An intelligent virtual assistant platform for consumer electronics customer support, product information, and troubleshooting.',
     fullDescription: `
       The Smart Gadgets AI Assistant platform represents a breakthrough in customer support for the consumer electronics industry. Our client faced increasing support costs and customer satisfaction challenges with their growing product line. Our solution leverages advanced AI technologies to create an intelligent virtual assistant that provides 24/7 support, accurate product information, and step-by-step troubleshooting.
@@ -72,9 +84,9 @@ const projects: Project[] = [
       'Product defect identification led to improvements in next-gen products'
     ],
     images: [
-      'https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-      'https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80',
-      'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80'
+      smartGadgetsImg,
+      smartGadgetsImg,
+      smartGadgetsImg
     ],
     stats: {
       satisfaction: '98%',
@@ -91,13 +103,14 @@ const projects: Project[] = [
       end: "June 2023",
       duration: "6 months"
     },
-    related: ['nestly-real-estate', 'language-learning', 'neo-green']
+    related: ['nestly-real-estate', 'language-learning', 'neo-green'],
+    livePreviewUrl: 'https://smartgadgets-ai.netlify.app/'
   },
   {
     id: 'nestly-real-estate',
     title: 'Nestly Real Estate Platform',
     client: 'Nestly Properties Ltd.',
-    clientLogo: 'https://placehold.co/200x80/efe/fff?text=Nestly',
+    clientLogo: nestlyImg,
     description: 'A comprehensive real estate platform streamlining property search, listing, and management for both residential and commercial properties.',
     fullDescription: `
       Nestly represents a complete digital transformation for the real estate industry, addressing the fragmented nature of property search and management. Our client needed a modern platform that would differentiate them in a competitive market and provide a seamless experience for buyers, sellers, and agents.
@@ -124,9 +137,9 @@ const projects: Project[] = [
       '92% of users report higher satisfaction compared to competitor platforms'
     ],
     images: [
-      'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=773&q=80',
-      'https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1296&q=80',
-      'https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1773&q=80'
+      nestlyImg,
+      nestlyImg,
+      nestlyImg
     ],
     stats: {
       properties: '5,000+',
@@ -143,13 +156,14 @@ const projects: Project[] = [
       end: "December 2022",
       duration: "10 months"
     },
-    related: ['smart-gadgets-ai', 'fleet-management', 'neo-green']
+    related: ['smart-gadgets-ai', 'fleet-management', 'neo-green'],
+    livePreviewUrl: 'https://smartgadgets-ai.netlify.app/'
   },
   {
     id: 'boma-bora',
     title: 'Boma Bora Agricultural Platform',
     client: 'Dairy Producers Cooperative',
-    clientLogo: 'https://placehold.co/200x80/efe/fff?text=BomaBora',
+    clientLogo: bomaBoraImg,
     description: 'A comprehensive agricultural management platform connecting farmers with collection agents and streamlining the dairy supply chain.',
     fullDescription: `
       The Boma Bora platform addresses critical inefficiencies in the dairy supply chain, particularly for smallholder farmers in rural areas. Our client, a cooperative of dairy producers, needed a solution to improve milk collection logistics, ensure quality standards, and provide transparent payment processes for their member farmers.
@@ -176,9 +190,9 @@ const projects: Project[] = [
       'Platform now supports over 1,200 smallholder farmers'
     ],
     images: [
-      'https://images.unsplash.com/photo-1631233859262-0d7b12ea7d4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-      'https://images.unsplash.com/photo-1516253593875-bd7ba052fbc5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80',
-      'https://images.unsplash.com/photo-1595058582385-4019d9a31ed6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80'
+      bomaBoraImg,
+      bomaBoraImg,
+      bomaBoraImg
     ],
     stats: {
       farmers: '1,200+',
@@ -195,7 +209,326 @@ const projects: Project[] = [
       end: "March 2023",
       duration: "8 months"
     },
-    related: ['meal-planner', 'fleet-management', 'neo-green']
+    related: ['meal-planner', 'fleet-management', 'neo-green'],
+    livePreviewUrl: 'https://smartgadgets-ai.netlify.app/'
+  },
+  {
+    id: 'fleet-management',
+    title: 'Fleet Management System',
+    client: 'TransCorp Logistics',
+    clientLogo: fleetManagementImg,
+    description: 'A comprehensive fleet management solution for tracking, maintenance, and optimization of vehicle operations.',
+    fullDescription: `
+      The Fleet Management System revolutionizes how logistics companies manage their vehicle fleets. Our client needed a modern solution that would provide real-time visibility into their operations, automate maintenance scheduling, optimize routes, and reduce operational costs.
+      
+      Our solution integrates IoT devices, GPS tracking, and advanced analytics to create a comprehensive management platform that gives fleet managers complete control and visibility of their operations.
+    `,
+    tags: ['React', 'Node.js', 'Firebase', 'IoT', 'GPS Integration'],
+    category: 'business',
+    features: [
+      'Real-time GPS tracking and location monitoring',
+      'Fuel consumption analysis and optimization',
+      'Automated maintenance scheduling based on usage patterns',
+      'Driver behavior monitoring and coaching',
+      'Route optimization and traffic-aware planning',
+      'Comprehensive reporting and analytics dashboard',
+      'Mobile app for drivers with task management',
+      'Integration with fuel cards and expense systems'
+    ],
+    results: [
+      'Reduced fuel costs by 22% in the first year',
+      'Decreased maintenance expenses by 35%',
+      'Improved driver safety scores by 40%',
+      'Increased vehicle utilization by 28%',
+      'Enhanced customer satisfaction through improved ETA accuracy'
+    ],
+    images: [
+      fleetManagementImg,
+      fleetManagementImg,
+      fleetManagementImg
+    ],
+    stats: {
+      vehicles: '500+',
+      fuelSavings: '22%',
+      efficiency: '+28%'
+    },
+    testimonial: {
+      quote: "The Fleet Management System has transformed our logistics operations. We now have complete visibility of our fleet, optimized routes, and significantly reduced operational costs. The ROI has exceeded our expectations.",
+      author: "James Mwangi",
+      position: "Operations Director, TransCorp Logistics"
+    },
+    timeline: {
+      start: "February 2023",
+      end: "July 2023",
+      duration: "6 months"
+    },
+    related: ['smart-gadgets-ai', 'nestly-real-estate', 'orion-safaris'],
+    livePreviewUrl: 'https://deezayecofuel.com/'
+  },
+  {
+    id: 'language-learning',
+    title: 'Language Learning Platform',
+    client: 'Global Education Initiative',
+    clientLogo: languageLearningImg,
+    description: 'An interactive language learning platform with AI-powered pronunciation feedback and personalized lesson plans.',
+    fullDescription: `
+      The Language Learning Platform was developed to make quality language education accessible to learners worldwide. Our client wanted to create an innovative solution that would leverage AI to provide personalized learning experiences and accurate pronunciation feedback.
+      
+      We built a comprehensive platform that combines structured lessons, interactive exercises, speech recognition, and adaptive learning algorithms to create an effective and engaging language learning experience.
+    `,
+    tags: ['React', 'AI/ML', 'Node.js', 'WebRTC', 'TensorFlow'],
+    category: 'education',
+    features: [
+      'AI-powered speech recognition and pronunciation feedback',
+      'Personalized lesson plans based on learning patterns',
+      'Interactive conversation practice with virtual characters',
+      'Gamified learning experience with achievements and leaderboards',
+      'Progress tracking and skill assessment',
+      'Community features for peer practice and support',
+      'Offline mode for learning on-the-go',
+      'Multi-platform support (web, iOS, Android)'
+    ],
+    results: [
+      'Platform now supports 12 languages with 50,000+ active users',
+      'Average user proficiency improvement of 65% after 3 months',
+      'Engagement metrics 3x higher than industry standards',
+      'User retention rate of 78% after 6 months',
+      '92% of users report higher satisfaction compared to traditional methods'
+    ],
+    images: [
+      languageLearningImg,
+      languageLearningImg,
+      languageLearningImg
+    ],
+    stats: {
+      languages: '12',
+      activeUsers: '50k+',
+      satisfaction: '92%'
+    },
+    testimonial: {
+      quote: "The AI-powered pronunciation feedback has been a game-changer for our language programs. Students are making progress faster than ever before, and the personalized approach keeps them engaged and motivated.",
+      author: "Dr. Emily Wangari",
+      position: "Director, Global Education Initiative"
+    },
+    timeline: {
+      start: "May 2022",
+      end: "December 2022",
+      duration: "8 months"
+    },
+    related: ['smart-gadgets-ai', 'meal-planner', 'neo-green'],
+    livePreviewUrl: 'https://multilanguagetutor.netlify.app/'
+  },
+  {
+    id: 'orion-safaris',
+    title: 'Orion Safaris Booking Platform',
+    client: 'Orion Safaris Ltd.',
+    clientLogo: orionSafarisImg,
+    description: 'A modern booking platform for safari experiences with real-time availability, itinerary planning and customer management.',
+    fullDescription: `
+      Orion Safaris needed a comprehensive digital solution to streamline their booking operations and provide an exceptional customer experience. The tourism industry in East Africa is highly competitive, and our client wanted to differentiate themselves through technology.
+      
+      We developed a modern booking platform that handles the entire customer journey from discovery to post-trip engagement. The system integrates real-time availability, dynamic pricing, personalized itinerary building, and secure payment processing.
+    `,
+    tags: ['React', 'Node.js', 'Supabase', 'Stripe', 'Leaflet Maps'],
+    category: 'travel',
+    features: [
+      'Interactive itinerary builder with drag-and-drop functionality',
+      'Real-time availability and dynamic pricing',
+      'Secure payment processing with multiple currency support',
+      'Customer relationship management with communication tools',
+      'Tour guide assignment and scheduling system',
+      'Vehicle and accommodation management',
+      'Post-trip feedback collection and analysis',
+      'Comprehensive reporting and business intelligence'
+    ],
+    results: [
+      'Increased booking conversion rate by 45%',
+      'Reduced operational costs by 30%',
+      'Improved customer satisfaction scores to 4.9/5',
+      'Streamlined operations allowing 35% business growth without additional staff',
+      'Enabled data-driven decision making for seasonal offerings'
+    ],
+    images: [
+      orionSafarisImg,
+      orionSafarisImg,
+      orionSafarisImg
+    ],
+    stats: {
+      bookings: '200+ monthly',
+      satisfaction: '4.9/5',
+      growth: '+35%'
+    },
+    testimonial: {
+      quote: "The booking platform has transformed our business. We're now able to handle more bookings with less staff, provide better customer experiences, and make data-driven decisions. It's been instrumental in our growth.",
+      author: "Samuel Maina",
+      position: "CEO, Orion Safaris Ltd."
+    },
+    timeline: {
+      start: "September 2022",
+      end: "February 2023",
+      duration: "6 months"
+    },
+    related: ['nestly-real-estate', 'fleet-management', 'boma-bora'],
+    livePreviewUrl: 'https://orionsafaris.info/'
+  },
+  {
+    id: 'meal-planner',
+    title: 'Intelligent Meal Planning Assistant',
+    client: 'NutriTech Solutions',
+    clientLogo: mealPlannerImg,
+    description: 'An intelligent chatbot that creates personalized meal plans and recipes based on dietary preferences and restrictions.',
+    fullDescription: `
+      NutriTech Solutions wanted to create an innovative solution that would help people eat healthier by simplifying meal planning. They envisioned an AI-powered assistant that could generate personalized meal plans and recipes based on individual preferences, dietary restrictions, and health goals.
+      
+      We developed an intelligent meal planning assistant that combines natural language processing, nutritional science, and personalized recommendations to create a powerful tool for healthy eating.
+    `,
+    tags: ['React', 'AI/ML', 'Node.js', 'TensorFlow', 'Python'],
+    category: 'agriculture',
+    features: [
+      'Conversational interface for gathering preferences and restrictions',
+      'Personalized meal plan generation based on dietary needs',
+      'Recipe recommendations with ingredient substitutions',
+      'Nutritional analysis and calorie tracking',
+      'Shopping list generation and grocery delivery integration',
+      'Meal prep instructions and cooking guides',
+      'Progress tracking toward health goals',
+      'Integration with fitness and health tracking apps'
+    ],
+    results: [
+      'Over 50,000 users in the first six months',
+      '92% of users report eating healthier due to the platform',
+      'Average user saves 4 hours per week on meal planning',
+      'Reduced food waste by 30% through smarter shopping lists',
+      'Increased adherence to special diets (e.g., vegan, keto) by 65%'
+    ],
+    images: [
+      mealPlannerImg,
+      mealPlannerImg,
+      mealPlannerImg
+    ],
+    stats: {
+      users: '50k+',
+      recipes: '10,000+',
+      timeSaved: '4 hours/week'
+    },
+    testimonial: {
+      quote: "The Meal Planner has revolutionized how our clients approach nutrition. It's not just about suggesting recipes - it's about creating personalized food experiences that fit into people's lives and help them reach their health goals.",
+      author: "Dr. Lisa Omondi",
+      position: "Founder, NutriTech Solutions"
+    },
+    timeline: {
+      start: "April 2023",
+      end: "September 2023",
+      duration: "6 months"
+    },
+    related: ['boma-bora', 'language-learning', 'smart-gadgets-ai'],
+    livePreviewUrl: 'https://diabetes-meal-planner.netlify.app/'
+  },
+  {
+    id: 'neo-green',
+    title: 'Willingness of Mind ESG Platform',
+    client: 'Green Future Foundation',
+    clientLogo: willingnessOfMindImg,
+    description: 'A sustainability platform for tracking, reporting, and improving environmental impacts for businesses and organizations.',
+    fullDescription: `
+      As environmental sustainability becomes increasingly important, businesses need tools to track, report, and improve their environmental impact. The Green Future Foundation wanted to create a platform that would help organizations manage their ESG (Environmental, Social, and Governance) initiatives effectively.
+      
+      We developed a comprehensive sustainability platform that enables businesses to measure their carbon footprint, set reduction targets, track progress, and generate reports for stakeholders and regulatory compliance.
+    `,
+    tags: ['React', 'Node.js', 'Chart.js', 'PostgreSQL', 'Material UI'],
+    category: 'sustainability',
+    features: [
+      'Carbon footprint calculation across multiple categories',
+      'Automated data collection from various sources',
+      'Customizable dashboards for different stakeholders',
+      'Goal setting and progress tracking',
+      'Regulatory compliance reporting',
+      'Recommendation engine for impact reduction',
+      'Sustainability certification management',
+      'Supply chain sustainability assessment'
+    ],
+    results: [
+      'Platform adopted by over 200 organizations in the first year',
+      'Users reported an average 25% reduction in carbon emissions',
+      'Improved ESG ratings for 85% of client organizations',
+      'Streamlined reporting process saving 20+ hours per month',
+      'Enhanced stakeholder transparency and engagement'
+    ],
+    images: [
+      willingnessOfMindImg,
+      willingnessOfMindImg,
+      willingnessOfMindImg
+    ],
+    stats: {
+      organizations: '200+',
+      emissions: '-25%',
+      reporting: '20+ hrs saved'
+    },
+    testimonial: {
+      quote: "The ESG Platform has transformed how we approach sustainability. What used to be a complex, time-consuming process is now streamlined and data-driven. We're not just reporting better - we're actually making more progress toward our environmental goals.",
+      author: "Mark Njoroge",
+      position: "Sustainability Director, Green Future Foundation"
+    },
+    timeline: {
+      start: "November 2022",
+      end: "May 2023",
+      duration: "7 months"
+    },
+    related: ['boma-bora', 'smart-gadgets-ai', 'nestly-real-estate'],
+    livePreviewUrl: 'https://mentalwelness.netlify.app/'
+  },
+  {
+    id: 'payroll-processing',
+    title: 'Enterprise Payroll System',
+    client: 'PayStream Technologies',
+    clientLogo: payrollImg,
+    description: 'A comprehensive payroll processing solution with automated tax calculations, compliance, and employee self-service.',
+    fullDescription: `
+      PayStream Technologies needed a modern payroll solution that could handle the complexities of multi-state taxation, regulatory compliance, and integration with existing HR systems. They wanted to offer both an enterprise solution and a user-friendly employee experience.
+      
+      We developed a comprehensive payroll system that automates calculations, ensures compliance, provides detailed reporting, and offers employees easy access to their information through a self-service portal.
+    `,
+    tags: ['Angular', 'Node.js', 'Material UI', 'PostgreSQL', 'Redis'],
+    category: 'business',
+    features: [
+      'Automated payroll processing with multi-currency support',
+      'Tax calculation and filing for multiple jurisdictions',
+      'Compliance monitoring and updates for changing regulations',
+      'Employee self-service portal for pay stubs and tax documents',
+      'Time and attendance integration',
+      'Benefits administration and deduction management',
+      'Comprehensive reporting and analytics',
+      'Secure document storage and retrieval'
+    ],
+    results: [
+      'Reduced processing time by 65% compared to previous systems',
+      'Decreased compliance-related errors by 95%',
+      'Improved employee satisfaction with self-service features',
+      'Saved 30+ hours per month on manual calculations',
+      'Successfully scaled to handle 10,000+ employees across 12 countries'
+    ],
+    images: [
+      payrollImg,
+      payrollImg,
+      payrollImg
+    ],
+    stats: {
+      processing: '-65% time',
+      compliance: '99.9% accuracy',
+      coverage: '12 countries'
+    },
+    testimonial: {
+      quote: "The Enterprise Payroll System has revolutionized how our clients handle compensation. The automation, accuracy, and compliance features have eliminated countless hours of manual work while reducing errors to near-zero. It's become our flagship product.",
+      author: "Janet Kamau",
+      position: "CTO, PayStream Technologies"
+    },
+    timeline: {
+      start: "January 2023",
+      end: "August 2023",
+      duration: "8 months"
+    },
+    related: ['fleet-management', 'smart-gadgets-ai', 'nestly-real-estate'],
+    livePreviewUrl: 'https://payroll-managementsystem.netlify.app/'
   }
 ];
 
@@ -297,18 +630,34 @@ const ProjectDetail: React.FC = () => {
                 <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-4">
                   {project.title}
                 </h1>
-                <div className="flex items-center gap-1 sm:gap-2">
-                  <img 
-                    src={project.clientLogo} 
-                    alt={project.client} 
-                    className="h-6 sm:h-8 w-auto bg-white rounded p-0.5 sm:p-1"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = 'https://via.placeholder.com/200x80?text=Client';
-                    }}
-                  />
-                  <span className="text-white/90 text-xs sm:text-sm md:text-base">Client: {project.client}</span>
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <img 
+                      src={project.clientLogo} 
+                      alt={project.client} 
+                      className="h-6 sm:h-8 w-auto bg-white rounded p-0.5 sm:p-1"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.onerror = null;
+                        target.src = 'https://via.placeholder.com/200x80?text=Client';
+                      }}
+                    />
+                    <span className="text-white/90 text-xs sm:text-sm md:text-base">Client: {project.client}</span>
+                  </div>
+                  
+                  {project.livePreviewUrl && (
+                    <a 
+                      href={project.livePreviewUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-medium px-4 py-2 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-sm sm:text-base mt-3 sm:mt-0"
+                    >
+                      <span>Live Preview</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

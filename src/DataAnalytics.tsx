@@ -16,11 +16,8 @@ const DataAnalytics = () => {
   const statsRef = useRef<HTMLDivElement>(null);
 
   const handleCTAClick = () => {
-    // Scroll to contact form or open modal
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    // Navigate to homepage with query parameter to open consultation form
+    window.location.href = '/?openConsultation=true';
   };
 
   useEffect(() => {
@@ -74,7 +71,7 @@ const DataAnalytics = () => {
   return (
     <div className="data-analytics-page overflow-hidden">
       {/* Hero Section - Clean design with consistent pattern */}
-      <section className="relative min-h-screen flex items-center pt-20 pb-24 overflow-hidden bg-gradient-to-br from-blue-50 via-white to-slate-50">
+      <section className="relative min-h-screen flex items-center pt-12 sm:pt-16 md:pt-20 pb-12 sm:pb-20 md:pb-24 overflow-hidden bg-gradient-to-br from-blue-50 via-white to-slate-50">
         {/* Abstract code background - subtle */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -100,7 +97,7 @@ const DataAnalytics = () => {
               <div className="space-y-5">
                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold mb-2 animate-pulse">
                   <BarChart2 className="w-4 h-4" />
-                  <span>Kenya's Premier Data Analytics Agency | 97% Client Satisfaction</span>
+                  <span>Aztech Intelligence | 97% Client Satisfaction</span>
                 </div>
                 <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
                   <span className="block text-gray-900">Increase Your ROI by</span>

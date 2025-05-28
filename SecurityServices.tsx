@@ -140,11 +140,7 @@ const SecurityServices: React.FC = () => {
 
   // Function to handle CTA button clicks
   const handleCTAClick = () => {
-    // Scroll to contact form or open contact modal
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    window.location.href = '/?openConsultation=true';
   };
   
   // Intersection Observer for animations
@@ -238,7 +234,7 @@ const SecurityServices: React.FC = () => {
         </div>
       </nav>
       {/* Hero Section with Parallax Effect */}
-      <section className="relative pt-24 pb-20 mt-16 overflow-hidden bg-gradient-to-br from-gray-50 via-white to-blue-50">
+      <section className="relative pt-4 sm:pt-8 md:pt-16 pb-12 sm:pb-16 md:pb-20 mt-2 sm:mt-4 md:mt-8 overflow-hidden bg-gradient-to-br from-gray-50 via-white to-blue-50">
         {/* Decorative elements */}
         <div 
           className="absolute top-0 right-0 w-1/3 h-1/3 bg-blue-500/5 rounded-bl-full" 

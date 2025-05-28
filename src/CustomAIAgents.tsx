@@ -112,9 +112,9 @@ const CustomAIAgents = () => {
     setMobileMenuOpen(false);
   };
 
-  // Handle CTA button click
+  // Handle CTA button click - opens consultation form
   const handleCTAClick = () => {
-    window.location.href = '/contact';
+    window.location.href = '/?openConsultation=true';
   };
 
   // Scroll reveal effect
@@ -151,7 +151,7 @@ const CustomAIAgents = () => {
               <div className="w-8 h-8 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 flex items-center justify-center">
                 <Bot className="w-5 h-5 text-white" />
               </div>
-              <div className="font-bold text-lg text-gray-900">Global Expert<span className="text-violet-600">.</span></div>
+              <div className="font-bold text-lg text-gray-900">Aztech Intelligence<span className="text-violet-600">.</span></div>
             </Link>
 
             {/* Mobile Menu Button */}
@@ -177,7 +177,7 @@ const CustomAIAgents = () => {
       </nav>
       
       {/* Hero Section with Floating 3D Elements */}
-      <section className="relative pt-24 pb-20 mt-16 overflow-hidden bg-gradient-to-br from-violet-50 via-white to-fuchsia-50">
+      <section className="relative pt-4 sm:pt-8 md:pt-16 pb-12 sm:pb-16 md:pb-20 mt-2 sm:mt-4 md:mt-8 overflow-hidden bg-gradient-to-br from-violet-50 via-white to-fuchsia-50">
         {/* Animated background elements */}
         <div className="absolute inset-0">
           {/* Decorative elements - like WebDevelopment page */}
@@ -885,7 +885,7 @@ const CustomAIAgents = () => {
       {/* Duplicate benefits section removed */}
       
       {/* Call to Action Section */}
-      <section className="py-20 relative overflow-hidden">
+      <section className="min-h-screen bg-white py-12 sm:py-20 md:py-24 relative overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8">
